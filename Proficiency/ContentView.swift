@@ -9,18 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView {
+            Home()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            OutcomesView(showCompletedOutcomes: false)
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                        Text("Ongoing")
+                }
+            OutcomesView(showCompletedOutcomes: true)
+                .tabItem {
+                    Image(systemName: "checkmark")
+                    Text("Completed")
+                }
         }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let dataController = DataController.preview
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
     }
 }
