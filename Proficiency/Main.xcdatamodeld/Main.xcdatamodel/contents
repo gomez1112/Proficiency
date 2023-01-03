@@ -10,7 +10,6 @@
     </entity>
     <entity name="Outcome" representedClassName="Outcome" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String"/>
-        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="detail" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>

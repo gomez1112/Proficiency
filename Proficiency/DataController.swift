@@ -63,7 +63,6 @@ final class DataController: ObservableObject {
                 let outcome = Outcome(context: viewContext)
                 outcome.title = "Outcome \(j)"
                 outcome.createdAt = Date()
-                outcome.completed = Bool.random()
                 outcome.unit = unit
                 outcome.indicators = []
                 

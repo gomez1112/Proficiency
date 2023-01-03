@@ -19,9 +19,9 @@ struct OutcomesView: View {
         NavigationStack {
             List {
                 ForEach(outcomes.wrappedValue) { outcome in
-                    Section(header: Text(outcome.title ?? "")) {
-                        ForEach(outcome.indicators?.allObjects as? [Indicator] ?? []) { indicator in
-                            Text(indicator.title ?? "")
+                    Section(header: Text(outcome.outcomeTitle)) {
+                        ForEach(outcome.outcomeIndicators) { indicator in
+                            Text(indicator.indicatorTitle)
                         }
                     }
                 }
