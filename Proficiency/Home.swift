@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Home: View {
     @EnvironmentObject private var dataController: DataController
+    static let tag: Tag? = .home
     var body: some View {
         NavigationStack {
             VStack {

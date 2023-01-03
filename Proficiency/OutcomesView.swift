@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OutcomesView: View {
+    static let openTag: Tag? = .open
+    static let closedTag: Tag? = .closed
     let showClosedOutcomes: Bool
     let outcomes: FetchRequest<Outcome>
     
