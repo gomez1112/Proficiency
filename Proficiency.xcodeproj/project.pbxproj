@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CC0F3AFE2963C22E00972579 /* Indicator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3AFD2963C22E00972579 /* Indicator+Extension.swift */; };
 		CC0F3B002963C2FB00972579 /* Outcome+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3AFF2963C2FB00972579 /* Outcome+Extension.swift */; };
+		CC0F3B022963D0F100972579 /* Unit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3B012963D0F100972579 /* Unit+Extension.swift */; };
 		CC574A3B2963B09F0021F3FF /* ProficiencyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */; };
 		CC574A3D2963B09F0021F3FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A3C2963B09F0021F3FF /* ContentView.swift */; };
 		CC574A3F2963B0A00021F3FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC574A3E2963B0A00021F3FF /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		CC0F3AFD2963C22E00972579 /* Indicator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Indicator+Extension.swift"; sourceTree = "<group>"; };
 		CC0F3AFF2963C2FB00972579 /* Outcome+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Outcome+Extension.swift"; sourceTree = "<group>"; };
+		CC0F3B012963D0F100972579 /* Unit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+Extension.swift"; sourceTree = "<group>"; };
 		CC574A372963B09F0021F3FF /* Proficiency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proficiency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyApp.swift; sourceTree = "<group>"; };
 		CC574A3C2963B09F0021F3FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				CC0F3AFD2963C22E00972579 /* Indicator+Extension.swift */,
+				CC0F3B012963D0F100972579 /* Unit+Extension.swift */,
 				CC0F3AFF2963C2FB00972579 /* Outcome+Extension.swift */,
 			);
 			path = Extension;
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC0F3AFE2963C22E00972579 /* Indicator+Extension.swift in Sources */,
+				CC0F3B022963D0F100972579 /* Unit+Extension.swift in Sources */,
 				CC574A4B2963B3960021F3FF /* Main.xcdatamodeld in Sources */,
 				CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */,
 				CC574A4F2963BD480021F3FF /* Home.swift in Sources */,

@@ -19,6 +19,10 @@ extension Outcome {
         color ?? "Light Blue"
     }
     
+    var outcomeCreatedAt: Date {
+        createdAt ?? Date()
+    }
+    
     var completionAmount: Double {
         guard let originalIndicators = indicators?.allObjects as? [Indicator] else { return 0 }
         guard !originalIndicators.isEmpty else { return 0 }
@@ -49,7 +53,8 @@ extension Outcome {
         
         let outcome = Outcome(context: viewContext)
         outcome.title = "Example Outcome"
-        outcome.detail = "This is an example outcome."
+        outcome.detail = "This is an example an outcome."
+        outcome.closed = Bool.random()
         outcome.createdAt = Date()
         return outcome
     }

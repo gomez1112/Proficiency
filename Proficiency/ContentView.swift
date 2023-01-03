@@ -18,12 +18,12 @@ struct ContentView: View {
             OutcomesView(showCompletedOutcomes: false)
                 .tabItem {
                     Image(systemName: "list.bullet")
-                        Text("Ongoing")
+                        Text("Open")
                 }
             OutcomesView(showCompletedOutcomes: true)
                 .tabItem {
                     Image(systemName: "checkmark")
-                    Text("Completed")
+                    Text("Closed")
                 }
         }
     }

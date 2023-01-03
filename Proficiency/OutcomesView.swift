@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct OutcomesView: View {
-    let showCompletedOutcomes: Bool
+    let showClosedOutcomes: Bool
     let outcomes: FetchRequest<Outcome>
     
     init(showCompletedOutcomes: Bool) {
-        self.showCompletedOutcomes = showCompletedOutcomes
-        outcomes = FetchRequest<Outcome>(entity: Outcome.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Outcome.createdAt, ascending: false)], predicate: NSPredicate(format: "completed = %d", showCompletedOutcomes))
+        self.showClosedOutcomes = showCompletedOutcomes
+        outcomes = FetchRequest<Outcome>(entity: Outcome.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Outcome.createdAt, ascending: false)], predicate: NSPredicate(format: "closed = %d", showCompletedOutcomes))
     }
     var body: some View {
         NavigationStack {
@@ -27,7 +27,7 @@ struct OutcomesView: View {
                 }
             }
             .listStyle(.insetGrouped)
-            .navigationTitle(showCompletedOutcomes ? "Completed" : "Ongoing")
+            .navigationTitle(showClosedOutcomes ? "Closed" : "Open")
         }
     }
 }

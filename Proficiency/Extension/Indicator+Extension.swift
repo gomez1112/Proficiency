@@ -28,6 +28,7 @@ extension Indicator {
         indicator.title = "Example Indicator"
         indicator.detail = "This is an example indicator."
         indicator.proficiency = 3
+        indicator.completed = Bool.random()
         indicator.createdAt = Date()
         return indicator
     }
