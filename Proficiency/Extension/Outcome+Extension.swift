@@ -16,7 +16,7 @@ extension Outcome {
     }
     
     var outcomeColor: String {
-        color ?? "Light Blue"
+        color ?? "Gold"
     }
     
     var outcomeCreatedAt: Date {
@@ -58,4 +58,6 @@ extension Outcome {
         outcome.createdAt = Date()
         return outcome
     }
+    
+    static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
 }

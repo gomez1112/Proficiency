@@ -21,13 +21,16 @@ struct OutcomesView: View {
         NavigationStack {
             List {
                 ForEach(outcomes.wrappedValue) { outcome in
-                    Section(header: Text(outcome.outcomeTitle)) {
+                    Section(header: OutcomeHeader(outcome: outcome)) {
                         ForEach(outcome.outcomeIndicators) { indicator in
-                            Text(indicator.indicatorTitle)
+                            IndicatorRow(indicator: indicator)
                         }
                     }
                 }
             }
+            .navigationDestination(for: Indicator.self, destination: { indicator in
+                EditIndicator(indicator: indicator)
+            })
             .listStyle(.insetGrouped)
             .navigationTitle(showClosedOutcomes ? "Closed" : "Open")
         }
