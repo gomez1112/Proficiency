@@ -17,17 +17,23 @@ struct ContentView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            OutcomesView(showCompletedOutcomes: false)
+            OutcomesView(showClosedOutcomes: false)
                 .tag(OutcomesView.openTag)
                 .tabItem {
                     Image(systemName: "list.bullet")
                         Text("Open")
                 }
-            OutcomesView(showCompletedOutcomes: true)
+            OutcomesView(showClosedOutcomes: true)
                 .tag(OutcomesView.closedTag)
                 .tabItem {
                     Image(systemName: "checkmark")
                     Text("Closed")
+                }
+            AwardsView()
+                .tag(AwardsView.tag)
+                .tabItem {
+                    Image(systemName: "rosette")
+                    Text("Awards")
                 }
         }
     }

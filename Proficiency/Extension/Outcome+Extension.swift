@@ -24,7 +24,7 @@ extension Outcome {
     }
     
     var completionAmount: Double {
-        guard let originalIndicators = indicators?.allObjects as? [Indicator] else { return 0 }
+        let originalIndicators = indicators?.allObjects as? [Indicator] ?? []
         guard !originalIndicators.isEmpty else { return 0 }
         
         let completedIndicators = originalIndicators.filter(\.completed)
@@ -32,9 +32,11 @@ extension Outcome {
     }
     
     var outcomeIndicators: [Indicator] {
-        let indicatorsArray = indicators?.allObjects as? [Indicator] ?? []
+        indicators?.allObjects as? [Indicator] ?? []
+    }
+    var outcomeIndicatorsDefaultSorted: [Indicator] {
         
-        return indicatorsArray.sorted {
+        outcomeIndicators.sorted {
             if $0.completed != $1.completed {
                 return !$0.completed
             }
@@ -44,6 +46,17 @@ extension Outcome {
             }
             
             return $0.indicatorCreateAt < $1.indicatorCreateAt
+        }
+    }
+    
+    func outcomeIndicators(using sortOrder: Indicator.SortOrder) -> [Indicator] {
+        switch sortOrder {
+        case .title:
+            return outcomeIndicators.sorted(by: \Indicator.indicatorTitle)
+        case .createdAt:
+            return outcomeIndicators.sorted(by: \Indicator.indicatorCreateAt)
+        case .optimized:
+            return outcomeIndicatorsDefaultSorted
         }
     }
     

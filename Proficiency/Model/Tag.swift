@@ -11,4 +11,5 @@ enum Tag {
     case home
     case open
     case closed
+    case award
 }

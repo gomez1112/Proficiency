@@ -20,6 +20,10 @@ extension Indicator {
         createdAt ?? Date()
     }
     
+    enum SortOrder {
+        case optimized, title, createdAt
+    }
+    
     static var example: Indicator {
         let controller = DataController(inMemory: true)
         let viewContext = controller.container.viewContext

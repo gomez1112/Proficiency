@@ -24,10 +24,10 @@ struct OutcomeHeader: View {
                     .imageScale(.large)
             }
         }
-        .navigationDestination(for: Outcome.self, destination: { outcome in
-            EditOutcome(outcome: outcome)
-        })
         .padding(.bottom, 10)
+        .navigationDestination(for: Outcome.self) { outcome in
+            EditOutcome(outcome: outcome)
+        }
     }
 }
 

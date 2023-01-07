@@ -26,6 +26,12 @@
 		CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4C2963B6D90021F3FF /* DataController.swift */; };
 		CC574A4F2963BD480021F3FF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4E2963BD480021F3FF /* Home.swift */; };
 		CC574A512963BDA20021F3FF /* OutcomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A502963BDA20021F3FF /* OutcomesView.swift */; };
+		CCF6908E296A0A2000EE80E3 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */; };
+		CCF69090296A131F00EE80E3 /* SelectSomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6908F296A131F00EE80E3 /* SelectSomething.swift */; };
+		CCF69092296A13B700EE80E3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */; };
+		CCF69095296A13F600EE80E3 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = CCF69094296A13F600EE80E3 /* Awards.json */; };
+		CCF69097296A143C00EE80E3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69096296A143C00EE80E3 /* Award.swift */; };
+		CCF69099296A14C900EE80E3 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69098296A14C900EE80E3 /* AwardsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +56,12 @@
 		CC574A4C2963B6D90021F3FF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		CC574A4E2963BD480021F3FF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		CC574A502963BDA20021F3FF /* OutcomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomesView.swift; sourceTree = "<group>"; };
+		CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
+		CCF6908F296A131F00EE80E3 /* SelectSomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomething.swift; sourceTree = "<group>"; };
+		CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		CCF69094296A13F600EE80E3 /* Awards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Awards.json; sourceTree = "<group>"; };
+		CCF69096296A143C00EE80E3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
+		CCF69098296A14C900EE80E3 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,8 @@
 				CC0F3AFF2963C2FB00972579 /* Outcome+Extension.swift */,
 				CC0F3B062963D6F300972579 /* Tag+Extension.swift */,
 				CC0F3B0D2963DE0700972579 /* Binding+Extension.swift */,
+				CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */,
+				CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -79,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				CC0F3B042963D52600972579 /* Tag.swift */,
+				CCF69096296A143C00EE80E3 /* Award.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,11 +103,13 @@
 			children = (
 				CC574A4E2963BD480021F3FF /* Home.swift */,
 				CC574A502963BDA20021F3FF /* OutcomesView.swift */,
+				CCF6908F296A131F00EE80E3 /* SelectSomething.swift */,
 				CC0F3B0B2963DD2800972579 /* IndicatorRow.swift */,
 				CC574A3C2963B09F0021F3FF /* ContentView.swift */,
 				CC0F3B092963D91200972579 /* EditIndicator.swift */,
 				CC0F3B0F2963DFAB00972579 /* OutcomeHeader.swift */,
 				CC0F3B132963E30600972579 /* EditOutcome.swift */,
+				CCF69098296A14C900EE80E3 /* AwardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,6 +133,7 @@
 		CC574A392963B09F0021F3FF /* Proficiency */ = {
 			isa = PBXGroup;
 			children = (
+				CCF69093296A13EF00EE80E3 /* Resources */,
 				CC0F3AFC2963C22100972579 /* Extension */,
 				CC0F3B082963D8F900972579 /* View */,
 				CC0F3B032963D50D00972579 /* Model */,
@@ -136,6 +154,14 @@
 				CC574A422963B0A00021F3FF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CCF69093296A13EF00EE80E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCF69094296A13F600EE80E3 /* Awards.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC0F3B122963E12800972579 /* Colors.xcassets in Resources */,
+				CCF69095296A13F600EE80E3 /* Awards.json in Resources */,
 				CC574A432963B0A00021F3FF /* Preview Assets.xcassets in Resources */,
 				CC574A3F2963B0A00021F3FF /* Assets.xcassets in Resources */,
 			);
@@ -211,20 +238,25 @@
 			files = (
 				CC0F3AFE2963C22E00972579 /* Indicator+Extension.swift in Sources */,
 				CC0F3B0A2963D91200972579 /* EditIndicator.swift in Sources */,
+				CCF6908E296A0A2000EE80E3 /* Sequence+Extension.swift in Sources */,
 				CC0F3B022963D0F100972579 /* Unit+Extension.swift in Sources */,
 				CC0F3B052963D52600972579 /* Tag.swift in Sources */,
 				CC574A4B2963B3960021F3FF /* Main.xcdatamodeld in Sources */,
+				CCF69090296A131F00EE80E3 /* SelectSomething.swift in Sources */,
 				CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */,
 				CC0F3B0C2963DD2800972579 /* IndicatorRow.swift in Sources */,
 				CC574A4F2963BD480021F3FF /* Home.swift in Sources */,
 				CC574A3D2963B09F0021F3FF /* ContentView.swift in Sources */,
 				CC574A3B2963B09F0021F3FF /* ProficiencyApp.swift in Sources */,
 				CC0F3B102963DFAB00972579 /* OutcomeHeader.swift in Sources */,
+				CCF69097296A143C00EE80E3 /* Award.swift in Sources */,
 				CC0F3B072963D6F300972579 /* Tag+Extension.swift in Sources */,
 				CC0F3B002963C2FB00972579 /* Outcome+Extension.swift in Sources */,
 				CC574A512963BDA20021F3FF /* OutcomesView.swift in Sources */,
 				CC0F3B142963E30600972579 /* EditOutcome.swift in Sources */,
 				CC0F3B0E2963DE0700972579 /* Binding+Extension.swift in Sources */,
+				CCF69092296A13B700EE80E3 /* Bundle+Extension.swift in Sources */,
+				CCF69099296A14C900EE80E3 /* AwardsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
