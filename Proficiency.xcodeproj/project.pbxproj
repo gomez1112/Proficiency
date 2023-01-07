@@ -32,6 +32,7 @@
 		CCF69095296A13F600EE80E3 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = CCF69094296A13F600EE80E3 /* Awards.json */; };
 		CCF69097296A143C00EE80E3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69096296A143C00EE80E3 /* Award.swift */; };
 		CCF69099296A14C900EE80E3 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69098296A14C900EE80E3 /* AwardsView.swift */; };
+		CCF6909B296A1F9100EE80E3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		CCF69094296A13F600EE80E3 /* Awards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Awards.json; sourceTree = "<group>"; };
 		CCF69096296A143C00EE80E3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		CCF69098296A14C900EE80E3 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
+		CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				CC0F3B0D2963DE0700972579 /* Binding+Extension.swift */,
 				CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */,
 				CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */,
+				CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				CCF69090296A131F00EE80E3 /* SelectSomething.swift in Sources */,
 				CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */,
 				CC0F3B0C2963DD2800972579 /* IndicatorRow.swift in Sources */,
+				CCF6909B296A1F9100EE80E3 /* Color+Extension.swift in Sources */,
 				CC574A4F2963BD480021F3FF /* Home.swift in Sources */,
 				CC574A3D2963B09F0021F3FF /* ContentView.swift in Sources */,
 				CC574A3B2963B09F0021F3FF /* ProficiencyApp.swift in Sources */,

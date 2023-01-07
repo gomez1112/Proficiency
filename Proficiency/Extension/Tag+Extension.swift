@@ -17,6 +17,8 @@ extension Tag: RawRepresentable {
             return "open"
         case .closed:
             return "closed"
+        case .award:
+            return "awards"
         }
     }
     
@@ -25,6 +27,7 @@ extension Tag: RawRepresentable {
         case "home": self = .home
         case "open": self = .open
         case "closed": self = .closed
+        case "awards": self = .award
         default:
             return nil
         }

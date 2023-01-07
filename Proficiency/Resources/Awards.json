@@ -1,71 +1,71 @@
 [
     {
         "name": "First Steps",
-        "description": "Add your first item.",
+        "description": "Add your first indicator.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 1,
         "image": "figure.walk"
     },
     {
         "name": "A Great Start",
-        "description": "Add 10 item.",
+        "description": "Add 10 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 10,
         "image": "hand.thumbsup.fill"
     },
     {
         "name": "Moving On Up",
-        "description": "Add 20 items.",
+        "description": "Add 20 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 20,
         "image": "tray.and.arrow.up.fill"
     },
     {
         "name": "Gathering Speed",
-        "description": "Add 50 items.",
+        "description": "Add 50 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 50,
         "image": "speedometer"
     },
     {
         "name": "Making Waves",
-        "description": "Add 100 items.",
+        "description": "Add 100 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 100,
         "image": "dot.radiowaves.left.and.right"
     },
     {
         "name": "High Performer",
-        "description": "Add 250 items.",
+        "description": "Add 250 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 250,
         "image": "square.stack.3d.up.fill"
     },
     {
         "name": "Star Performer",
-        "description": "Add 500 items.",
+        "description": "Add 500 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 500,
         "image": "star.circle.fill"
     },
     {
         "name": "Champion Performer",
-        "description": "Add 1000 items.",
+        "description": "Add 1000 indicators.",
         "color": "Light Blue",
-        "criterion": "items",
+        "criterion": "indicators",
         "value": 1000,
         "image": "crown.fill"
     },
     {
         "name": "Checking Boxes",
-        "description": "Complete your first item.",
+        "description": "Complete your first indicator.",
         "color": "Orange",
         "criterion": "complete",
         "value": 1,
@@ -73,7 +73,7 @@
     },
     {
         "name": "Rocking it",
-        "description": "Complete 10 items.",
+        "description": "Complete 10 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 10,
@@ -81,7 +81,7 @@
     },
     {
         "name": "20 is Plenty",
-        "description": "Complete 20 items.",
+        "description": "Complete 20 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 20,
@@ -89,7 +89,7 @@
     },
     {
         "name": "Bullseye!",
-        "description": "Complete 50 items.",
+        "description": "Complete 50 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 50,
@@ -97,7 +97,7 @@
     },
     {
         "name": "Flying High",
-        "description": "Complete 100 items.",
+        "description": "Complete 100 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 100,
@@ -105,7 +105,7 @@
     },
     {
         "name": "You're On Fire!",
-        "description": "Complete 250 items.",
+        "description": "Complete 250 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 250,
@@ -113,7 +113,7 @@
     },
     {
         "name": "Box Ticker in Chief",
-        "description": "Complete 500 items.",
+        "description": "Complete 500 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 500,
@@ -121,7 +121,7 @@
     },
     {
         "name": "Boom!",
-        "description": "Complete 1000 items.",
+        "description": "Complete 1000 indicators.",
         "color": "Orange",
         "criterion": "complete",
         "value": 1000,

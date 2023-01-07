@@ -48,6 +48,25 @@ final class DataController: ObservableObject {
         _ = try? container.viewContext.execute(batchDeleteRequest3)
     }
     
+    func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
+        (try? container.viewContext.count(for: fetchRequest)) ?? 0
+    }
+    
+    func hasEarned(award: Award) -> Bool {
+        switch award.criterion {
+        case "indicators":
+            let fetchRequest: NSFetchRequest<Indicator> = NSFetchRequest(entityName: "Indicator")
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+        case "complete":
+            let fetchRequest: NSFetchRequest<Indicator> = NSFetchRequest(entityName: "Indicator")
+            fetchRequest.predicate = NSPredicate(format: "completed = true")
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+        default:
+            return false
+        }
+    }
     func createSampleData() throws {
         let viewContext = container.viewContext
         
