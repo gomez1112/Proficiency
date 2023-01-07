@@ -36,7 +36,3 @@ struct OutcomeHeader_Previews: PreviewProvider {
         OutcomeHeader(outcome: .example)
     }
 }
-//NavigationLink(destination: EmptyView()) {
-//    Image(systemName: "square.and.pencil")
-//        .imageScale(.large)
-//}

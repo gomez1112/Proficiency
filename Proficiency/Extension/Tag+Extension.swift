@@ -8,7 +8,8 @@
 import Foundation
 
 extension Tag: RawRepresentable {
-    var rawValue: String {
+    typealias RawValue = String
+    var rawValue: RawValue {
         switch self {
         case .home:
             return "home"
@@ -19,7 +20,7 @@ extension Tag: RawRepresentable {
         }
     }
     
-    init?(rawValue: String) {
+    init?(rawValue: RawValue) {
         switch rawValue {
         case "home": self = .home
         case "open": self = .open

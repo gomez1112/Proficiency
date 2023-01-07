@@ -116,9 +116,9 @@
 		CC574A392963B09F0021F3FF /* Proficiency */ = {
 			isa = PBXGroup;
 			children = (
+				CC0F3AFC2963C22100972579 /* Extension */,
 				CC0F3B082963D8F900972579 /* View */,
 				CC0F3B032963D50D00972579 /* Model */,
-				CC0F3AFC2963C22100972579 /* Extension */,
 				CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */,
 				CC574A4C2963B6D90021F3FF /* DataController.swift */,
 				CC574A492963B3960021F3FF /* Main.xcdatamodeld */,
