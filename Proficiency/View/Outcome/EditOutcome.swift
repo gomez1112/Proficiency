@@ -10,25 +10,20 @@ import SwiftUI
 struct EditOutcome: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var dataController: DataController
-    
     @State private var title: String
     @State private var detail: String
     @State private var color: String
     @State private var showingDeleteConfirm = false
-    
     let outcome: Outcome
-    
     let colorColumns = [
         GridItem(.adaptive(minimum: 44))
     ]
-    
     init(outcome: Outcome) {
         self.outcome = outcome
         _title = State(wrappedValue: outcome.outcomeTitle)
         _detail = State(wrappedValue: outcome.outcomeDetail)
         _color = State(wrappedValue: outcome.outcomeColor)
     }
-
     var body: some View {
         Form {
             Section(header: Text("Basic settings")) {
@@ -37,27 +32,11 @@ struct EditOutcome: View {
             }
             Section(header: Text("Custom outcome color")) {
                 LazyVGrid(columns: colorColumns) {
-                    ForEach(Outcome.colors, id: \.self) { indicator in
-                        ZStack {
-                            Color(indicator)
-                                .aspectRatio(1, contentMode: .fit)
-                                .cornerRadius(6)
-                            
-                            if indicator == color {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.white)
-                                    .font(.largeTitle)
-                            }
-                        }
-                        .onTapGesture {
-                            color = indicator
-                            update()
-                        }
-                    }
+                    ForEach(Outcome.colors, id: \.self, content: colorButton)
                 }
                 .padding(.vertical)
             }
-            
+            // swiftlint:disable:next line_length
             Section(footer: Text("Closing a outcome moves it from the Open to Closed tab; deleting it removes the outcome completely.")) {
                 Button(outcome.closed ? "Reopen this outcome" : "Close this outcome") {
                     outcome.closed.toggle()
@@ -85,6 +64,27 @@ struct EditOutcome: View {
     func delete() {
         dataController.delete(outcome)
         dismiss()
+    }
+    func colorButton(for indicator: String) -> some View {
+        ZStack {
+            Color(indicator)
+                .aspectRatio(1, contentMode: .fit)
+                .cornerRadius(6)
+            if indicator == color {
+                Image(systemName: "checkmark.circle")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+            }
+        }
+        .onTapGesture {
+            color = indicator
+            update()
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(
+            indicator == color ? [.isButton, .isSelected] : .isButton
+        )
+        .accessibilityLabel(LocalizedStringKey(indicator))
     }
 }
 

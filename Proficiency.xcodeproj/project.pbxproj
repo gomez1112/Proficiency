@@ -33,7 +33,25 @@
 		CCF69097296A143C00EE80E3 /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69096296A143C00EE80E3 /* Award.swift */; };
 		CCF69099296A14C900EE80E3 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69098296A14C900EE80E3 /* AwardsView.swift */; };
 		CCF6909B296A1F9100EE80E3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */; };
+		CCF6909D296A4C3A00EE80E3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCF6909C296A4C3A00EE80E3 /* Localizable.strings */; };
+		CCF6909F296A571A00EE80E3 /* IndicatorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6909E296A571A00EE80E3 /* IndicatorList.swift */; };
+		CCF690A1296A591B00EE80E3 /* OutcomeSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF690A0296A591B00EE80E3 /* OutcomeSummary.swift */; };
+		CCF690AF296A69EF00EE80E3 /* ProficiencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF690AE296A69EF00EE80E3 /* ProficiencyTests.swift */; };
+		CCF690B6296A6B1500EE80E3 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF690B5296A6B1500EE80E3 /* AssetTests.swift */; };
+		CCF690BA296A6CBD00EE80E3 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF690B9296A6CBD00EE80E3 /* DevelopmentTests.swift */; };
+		CCF690BC296A6F2000EE80E3 /* OutcomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF690BB296A6F2000EE80E3 /* OutcomeTests.swift */; };
+		CCF690BE296A708300EE80E3 /* AwardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF690BD296A708300EE80E3 /* AwardTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCF690B0296A69EF00EE80E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC574A2F2963B09F0021F3FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC574A362963B09F0021F3FF;
+			remoteInfo = Proficiency;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CC0F3AFD2963C22E00972579 /* Indicator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Indicator+Extension.swift"; sourceTree = "<group>"; };
@@ -64,10 +82,26 @@
 		CCF69096296A143C00EE80E3 /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		CCF69098296A14C900EE80E3 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		CCF6909C296A4C3A00EE80E3 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		CCF6909E296A571A00EE80E3 /* IndicatorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorList.swift; sourceTree = "<group>"; };
+		CCF690A0296A591B00EE80E3 /* OutcomeSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeSummary.swift; sourceTree = "<group>"; };
+		CCF690AC296A69EF00EE80E3 /* ProficiencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProficiencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCF690AE296A69EF00EE80E3 /* ProficiencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyTests.swift; sourceTree = "<group>"; };
+		CCF690B5296A6B1500EE80E3 /* AssetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTests.swift; sourceTree = "<group>"; };
+		CCF690B9296A6CBD00EE80E3 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
+		CCF690BB296A6F2000EE80E3 /* OutcomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeTests.swift; sourceTree = "<group>"; };
+		CCF690BD296A708300EE80E3 /* AwardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CC574A342963B09F0021F3FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCF690A9296A69EF00EE80E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -104,15 +138,12 @@
 		CC0F3B082963D8F900972579 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCF690A7296A691700EE80E3 /* Indicator */,
+				CCF690A6296A690500EE80E3 /* Outcome */,
+				CCF690A5296A68EF00EE80E3 /* Award */,
 				CC574A4E2963BD480021F3FF /* Home.swift */,
-				CC574A502963BDA20021F3FF /* OutcomesView.swift */,
 				CCF6908F296A131F00EE80E3 /* SelectSomething.swift */,
-				CC0F3B0B2963DD2800972579 /* IndicatorRow.swift */,
 				CC574A3C2963B09F0021F3FF /* ContentView.swift */,
-				CC0F3B092963D91200972579 /* EditIndicator.swift */,
-				CC0F3B0F2963DFAB00972579 /* OutcomeHeader.swift */,
-				CC0F3B132963E30600972579 /* EditOutcome.swift */,
-				CCF69098296A14C900EE80E3 /* AwardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				CC574A392963B09F0021F3FF /* Proficiency */,
+				CCF690AD296A69EF00EE80E3 /* ProficiencyTests */,
 				CC574A382963B09F0021F3FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				CC574A372963B09F0021F3FF /* Proficiency.app */,
+				CCF690AC296A69EF00EE80E3 /* ProficiencyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,12 +169,14 @@
 		CC574A392963B09F0021F3FF /* Proficiency */ = {
 			isa = PBXGroup;
 			children = (
+				CCF690BF296AEB5900EE80E3 /* Constant */,
+				CCF690A4296A689C00EE80E3 /* ViewModel */,
+				CCF690A3296A686900EE80E3 /* Configuration */,
 				CCF69093296A13EF00EE80E3 /* Resources */,
 				CC0F3AFC2963C22100972579 /* Extension */,
 				CC0F3B082963D8F900972579 /* View */,
 				CC0F3B032963D50D00972579 /* Model */,
 				CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */,
-				CC574A4C2963B6D90021F3FF /* DataController.swift */,
 				CC574A492963B3960021F3FF /* Main.xcdatamodeld */,
 				CC574A3E2963B0A00021F3FF /* Assets.xcassets */,
 				CC0F3B112963E12800972579 /* Colors.xcassets */,
@@ -163,8 +198,72 @@
 			isa = PBXGroup;
 			children = (
 				CCF69094296A13F600EE80E3 /* Awards.json */,
+				CCF6909C296A4C3A00EE80E3 /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CCF690A3296A686900EE80E3 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		CCF690A4296A689C00EE80E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC574A4C2963B6D90021F3FF /* DataController.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CCF690A5296A68EF00EE80E3 /* Award */ = {
+			isa = PBXGroup;
+			children = (
+				CCF69098296A14C900EE80E3 /* AwardsView.swift */,
+			);
+			path = Award;
+			sourceTree = "<group>";
+		};
+		CCF690A6296A690500EE80E3 /* Outcome */ = {
+			isa = PBXGroup;
+			children = (
+				CCF690A0296A591B00EE80E3 /* OutcomeSummary.swift */,
+				CC574A502963BDA20021F3FF /* OutcomesView.swift */,
+				CC0F3B0F2963DFAB00972579 /* OutcomeHeader.swift */,
+				CC0F3B132963E30600972579 /* EditOutcome.swift */,
+			);
+			path = Outcome;
+			sourceTree = "<group>";
+		};
+		CCF690A7296A691700EE80E3 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				CC0F3B092963D91200972579 /* EditIndicator.swift */,
+				CC0F3B0B2963DD2800972579 /* IndicatorRow.swift */,
+				CCF6909E296A571A00EE80E3 /* IndicatorList.swift */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
+		CCF690AD296A69EF00EE80E3 /* ProficiencyTests */ = {
+			isa = PBXGroup;
+			children = (
+				CCF690AE296A69EF00EE80E3 /* ProficiencyTests.swift */,
+				CCF690B5296A6B1500EE80E3 /* AssetTests.swift */,
+				CCF690B9296A6CBD00EE80E3 /* DevelopmentTests.swift */,
+				CCF690BB296A6F2000EE80E3 /* OutcomeTests.swift */,
+				CCF690BD296A708300EE80E3 /* AwardTests.swift */,
+			);
+			path = ProficiencyTests;
+			sourceTree = "<group>";
+		};
+		CCF690BF296AEB5900EE80E3 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +276,7 @@
 				CC574A332963B09F0021F3FF /* Sources */,
 				CC574A342963B09F0021F3FF /* Frameworks */,
 				CC574A352963B09F0021F3FF /* Resources */,
+				CCF690A2296A65A200EE80E3 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -186,6 +286,24 @@
 			productName = Proficiency;
 			productReference = CC574A372963B09F0021F3FF /* Proficiency.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CCF690AB296A69EF00EE80E3 /* ProficiencyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCF690B2296A69EF00EE80E3 /* Build configuration list for PBXNativeTarget "ProficiencyTests" */;
+			buildPhases = (
+				CCF690A8296A69EF00EE80E3 /* Sources */,
+				CCF690A9296A69EF00EE80E3 /* Frameworks */,
+				CCF690AA296A69EF00EE80E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CCF690B1296A69EF00EE80E3 /* PBXTargetDependency */,
+			);
+			name = ProficiencyTests;
+			productName = ProficiencyTests;
+			productReference = CCF690AC296A69EF00EE80E3 /* ProficiencyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -199,6 +317,10 @@
 				TargetAttributes = {
 					CC574A362963B09F0021F3FF = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					CCF690AB296A69EF00EE80E3 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CC574A362963B09F0021F3FF;
 					};
 				};
 			};
@@ -216,6 +338,7 @@
 			projectRoot = "";
 			targets = (
 				CC574A362963B09F0021F3FF /* Proficiency */,
+				CCF690AB296A69EF00EE80E3 /* ProficiencyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCF6909D296A4C3A00EE80E3 /* Localizable.strings in Resources */,
 				CC0F3B122963E12800972579 /* Colors.xcassets in Resources */,
 				CCF69095296A13F600EE80E3 /* Awards.json in Resources */,
 				CC574A432963B0A00021F3FF /* Preview Assets.xcassets in Resources */,
@@ -232,7 +356,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CCF690AA296A69EF00EE80E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CCF690A2296A65A200EE80E3 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC574A332963B09F0021F3FF /* Sources */ = {
@@ -240,12 +393,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC0F3AFE2963C22E00972579 /* Indicator+Extension.swift in Sources */,
+				CCF690A1296A591B00EE80E3 /* OutcomeSummary.swift in Sources */,
 				CC0F3B0A2963D91200972579 /* EditIndicator.swift in Sources */,
 				CCF6908E296A0A2000EE80E3 /* Sequence+Extension.swift in Sources */,
 				CC0F3B022963D0F100972579 /* Unit+Extension.swift in Sources */,
 				CC0F3B052963D52600972579 /* Tag.swift in Sources */,
 				CC574A4B2963B3960021F3FF /* Main.xcdatamodeld in Sources */,
 				CCF69090296A131F00EE80E3 /* SelectSomething.swift in Sources */,
+				CCF6909F296A571A00EE80E3 /* IndicatorList.swift in Sources */,
 				CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */,
 				CC0F3B0C2963DD2800972579 /* IndicatorRow.swift in Sources */,
 				CCF6909B296A1F9100EE80E3 /* Color+Extension.swift in Sources */,
@@ -264,7 +419,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CCF690A8296A69EF00EE80E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF690BC296A6F2000EE80E3 /* OutcomeTests.swift in Sources */,
+				CCF690B6296A6B1500EE80E3 /* AssetTests.swift in Sources */,
+				CCF690BE296A708300EE80E3 /* AwardTests.swift in Sources */,
+				CCF690AF296A69EF00EE80E3 /* ProficiencyTests.swift in Sources */,
+				CCF690BA296A6CBD00EE80E3 /* DevelopmentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCF690B1296A69EF00EE80E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC574A362963B09F0021F3FF /* Proficiency */;
+			targetProxy = CCF690B0296A69EF00EE80E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CC574A442963B0A00021F3FF /* Debug */ = {
@@ -452,6 +627,47 @@
 			};
 			name = Release;
 		};
+		CCF690B3296A69EF00EE80E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88QL9VPLMY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.transfinite.ProficiencyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Proficiency.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Proficiency";
+			};
+			name = Debug;
+		};
+		CCF690B4296A69EF00EE80E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88QL9VPLMY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.transfinite.ProficiencyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Proficiency.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Proficiency";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -469,6 +685,15 @@
 			buildConfigurations = (
 				CC574A472963B0A00021F3FF /* Debug */,
 				CC574A482963B0A00021F3FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCF690B2296A69EF00EE80E3 /* Build configuration list for PBXNativeTarget "ProficiencyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCF690B3296A69EF00EE80E3 /* Debug */,
+				CCF690B4296A69EF00EE80E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

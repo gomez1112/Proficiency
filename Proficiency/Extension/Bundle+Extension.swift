@@ -7,9 +7,12 @@
 
 import Foundation
 
-extension Bundle { func load<T: Decodable>( _ filename: String, _ type: T.Type = T.self, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate, keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> T {
+extension Bundle {
+    func load<T: Decodable>( _ filename: String,
+                             _ type: T.Type = T.self,
+                             dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
+                             keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys) -> T {
         let data: Data
-        
         guard let file = self.url(forResource: filename, withExtension: nil) else {
             fatalError("Could not find \(filename) in main bundle.")
         }
@@ -24,10 +27,12 @@ extension Bundle { func load<T: Decodable>( _ filename: String, _ type: T.Type =
             decoder.keyDecodingStrategy = keyDecodingStrategy
             return try decoder.decode(T.self, from: data)
         } catch DecodingError.keyNotFound(let key, let context) {
+            // swiftlint:disable:next line_length
             fatalError("Could not decode \(filename) from bundle due to missing key '\(key.stringValue)' not found - \(context.debugDescription)")
         } catch DecodingError.typeMismatch(_, let context) {
             fatalError("Could not decode \(file) from bundle due to type mismatch – \(context.debugDescription)")
         } catch DecodingError.valueNotFound(let type, let context) {
+            // swiftlint:disable:next line_length
             fatalError("Could not decode \(file) from bundle due to missing \(type) value – \(context.debugDescription)")
         } catch DecodingError.dataCorrupted(_) {
             fatalError("Could not decode \(file) from bundle because it appears to be invalid JSON")

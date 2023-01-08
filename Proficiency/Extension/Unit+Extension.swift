@@ -11,33 +11,26 @@ extension Unit {
     var unitTitle: String {
         title ?? "New Unit"
     }
-    
     var unitDetail: String {
         detail ?? ""
     }
-    
     var unitCreatedAt: Date {
         createdAt ?? Date()
     }
-    
     var unitTheme: String {
         theme ?? ""
     }
-    
     var unitDrivingQuestion: String {
         drivingQuestion ?? ""
     }
-    
     var unitOutcomes: [Outcome] {
         (outcomes?.allObjects as? [Outcome] ?? []).sorted {
             return $0.outcomeCreatedAt > $1.outcomeCreatedAt
         }
     }
-    
     static var example: Unit {
         let controller = DataController(inMemory: true)
         let viewContext = controller.container.viewContext
-        
         let unit = Unit(context: viewContext)
         unit.title = "Example Unit"
         unit.detail = "This is an example an unit."
@@ -46,5 +39,4 @@ extension Unit {
         unit.drivingQuestion = "Is this a driving question?"
         return unit
     }
-    
 }

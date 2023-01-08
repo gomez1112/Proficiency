@@ -24,6 +24,7 @@ struct OutcomeHeader: View {
                     .imageScale(.large)
             }
         }
+        .accessibilityElement(children: .ignore)
         .padding(.bottom, 10)
         .navigationDestination(for: Outcome.self) { outcome in
             EditOutcome(outcome: outcome)

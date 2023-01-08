@@ -14,7 +14,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="detail" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="indicators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Indicator" inverseName="outcome" inverseEntity="Indicator"/>
+        <relationship name="indicators" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Indicator" inverseName="outcome" inverseEntity="Indicator"/>
         <relationship name="unit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Unit" inverseName="outcomes" inverseEntity="Unit"/>
     </entity>
     <entity name="Unit" representedClassName="Unit" syncable="YES" codeGenerationType="class">
@@ -23,6 +23,6 @@
         <attribute name="drivingQuestion" optional="YES" attributeType="String"/>
         <attribute name="theme" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="outcomes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Outcome" inverseName="unit" inverseEntity="Outcome"/>
+        <relationship name="outcomes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Outcome" inverseName="unit" inverseEntity="Outcome"/>
     </entity>
 </model>

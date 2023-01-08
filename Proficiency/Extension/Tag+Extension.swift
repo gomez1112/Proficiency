@@ -21,7 +21,6 @@ extension Tag: RawRepresentable {
             return "awards"
         }
     }
-    
     init?(rawValue: RawValue) {
         switch rawValue {
         case "home": self = .home

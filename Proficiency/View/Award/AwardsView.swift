@@ -29,15 +29,26 @@ struct AwardsView: View {
                                 .scaledToFit()
                                 .padding()
                                 .frame(width: 100, height: 100)
-                                .foregroundColor(dataController.hasEarned(award: award) ? Color(award.color) : Color.secondary.opacity(0.5))
+                                .foregroundColor(color(for: award))
                         }
+                        .accessibilityLabel(label(for: award))
+                        .accessibilityHint(Text(award.description))
                     }
                 }
             }
             .navigationTitle("Awards")
         }
-        .alert(dataController.hasEarned(award: selectedAward) ? "Unlocked: \(selectedAward.name)" : "Locked", isPresented: $showingAwardDetails) {}
+        .alert(getAwardAlert(), isPresented: $showingAwardDetails) {}
     message: { Text(selectedAward.description) }
+    }
+    private func color(for award: Award) -> Color {
+        dataController.hasEarned(award: award) ? Color(award.color) : Color.secondary.opacity(0.5)
+    }
+    private func label(for award: Award) -> Text {
+        Text(dataController.hasEarned(award: award) ? "Unlocked: \(award.name)" : "Locked")
+    }
+    private func getAwardAlert() -> LocalizedStringKey {
+        dataController.hasEarned(award: selectedAward) ? "Unlocked: \(selectedAward.name)" : "Locked"
     }
 }
 

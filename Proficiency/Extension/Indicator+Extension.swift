@@ -11,27 +11,22 @@ extension Indicator {
     var indicatorTitle: String {
         title ?? "New Indicator"
     }
-    
     var indicatorDetail: String {
         detail ?? ""
     }
-    
     var indicatorCreateAt: Date {
         createdAt ?? Date()
     }
-    
     enum SortOrder {
         case optimized, title, createdAt
     }
-    
     static var example: Indicator {
-        let controller = DataController(inMemory: true)
+        let controller = DataController.preview
         let viewContext = controller.container.viewContext
-        
         let indicator = Indicator(context: viewContext)
         indicator.title = "Example Indicator"
         indicator.detail = "This is an example indicator."
-        indicator.proficiency = 3
+        indicator.proficiency = 0
         indicator.completed = Bool.random()
         indicator.createdAt = Date()
         return indicator

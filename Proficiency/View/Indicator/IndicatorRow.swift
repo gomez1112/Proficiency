@@ -17,9 +17,9 @@ struct IndicatorRow: View {
             } icon: {
                 icon
             }
+            .accessibilityLabel(label)
         }
     }
-    
     var icon: some View {
         if indicator.completed {
             return Image(systemName: "checkmark.circle")
@@ -30,6 +30,15 @@ struct IndicatorRow: View {
         } else {
             return Image(systemName: "checkmark.circle")
                 .foregroundColor(.clear)
+        }
+    }
+    var label: Text {
+        if indicator.completed {
+            return Text("\(indicator.indicatorTitle), completed")
+        } else if indicator.proficiency == 0 {
+            return Text("\(indicator.indicatorTitle), high priority.")
+        } else {
+            return Text(indicator.indicatorTitle)
         }
     }
 }

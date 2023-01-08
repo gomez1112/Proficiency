@@ -13,9 +13,7 @@ struct EditIndicator: View {
     @State private var detail: String
     @State private var proficiency: Int
     @State private var completed: Bool
-    
     let indicator: Indicator
-    
     init(indicator: Indicator) {
         self.indicator = indicator
         title = indicator.indicatorTitle
@@ -44,7 +42,6 @@ struct EditIndicator: View {
         .navigationTitle("Edit Indicator")
         .onDisappear(perform: dataController.save)
     }
-    
     func update() {
         indicator.outcome?.objectWillChange.send()
         indicator.title = title

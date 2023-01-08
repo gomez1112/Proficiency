@@ -5,7 +5,7 @@
 //  Created by Gerard Gomez on 1/2/23.
 //
 
-import Foundation
+import SwiftUI
 
 extension Outcome {
     var outcomeTitle: String {
@@ -14,41 +14,36 @@ extension Outcome {
     var outcomeDetail: String {
         detail ?? ""
     }
-    
     var outcomeColor: String {
         color ?? "Gold"
     }
-    
     var outcomeCreatedAt: Date {
         createdAt ?? Date()
     }
-    
     var completionAmount: Double {
         let originalIndicators = indicators?.allObjects as? [Indicator] ?? []
         guard !originalIndicators.isEmpty else { return 0 }
-        
         let completedIndicators = originalIndicators.filter(\.completed)
         return Double(completedIndicators.count) / Double(originalIndicators.count)
     }
-    
+    var label: LocalizedStringKey {
+        // swiftlint:disable:next line_length
+        LocalizedStringKey("\(outcomeTitle), \(outcomeIndicators.count) indicators, \(completionAmount * 100, specifier: "%g")% complete.")
+    }
     var outcomeIndicators: [Indicator] {
         indicators?.allObjects as? [Indicator] ?? []
     }
-    var outcomeIndicatorsDefaultSorted: [Indicator] {
-        
+    private var outcomeIndicatorsDefaultSorted: [Indicator] {
         outcomeIndicators.sorted {
             if $0.completed != $1.completed {
                 return !$0.completed
             }
-            
             if $0.proficiency != $1.proficiency {
                 return $0.proficiency > $1.proficiency
             }
-            
             return $0.indicatorCreateAt < $1.indicatorCreateAt
         }
     }
-    
     func outcomeIndicators(using sortOrder: Indicator.SortOrder) -> [Indicator] {
         switch sortOrder {
         case .title:
@@ -59,11 +54,9 @@ extension Outcome {
             return outcomeIndicatorsDefaultSorted
         }
     }
-    
     static var example: Outcome {
-        let controller = DataController(inMemory: true)
+        let controller = DataController.preview
         let viewContext = controller.container.viewContext
-        
         let outcome = Outcome(context: viewContext)
         outcome.title = "Example Outcome"
         outcome.detail = "This is an example an outcome."
@@ -71,6 +64,17 @@ extension Outcome {
         outcome.createdAt = Date()
         return outcome
     }
-    
-    static let colors = ["Pink", "Purple", "Red", "Orange", "Gold", "Green", "Teal", "Light Blue", "Dark Blue", "Midnight", "Dark Gray", "Gray"]
+    static let colors = [
+        "Pink",
+        "Purple",
+        "Red",
+        "Orange",
+        "Gold",
+        "Green",
+        "Teal",
+        "Light Blue",
+        "Dark Blue",
+        "Midnight",
+        "Dark Gray",
+        "Gray"]
 }
