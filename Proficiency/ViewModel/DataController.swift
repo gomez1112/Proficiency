@@ -6,16 +6,28 @@
 //
 
 import CoreData
+import CoreSpotlight
 import Foundation
+import UserNotifications
 
 /// A `DataController` class is responsible for managing the Core Data stack of the app.
 final class DataController: ObservableObject {
     /// The `NSPersistentCloudKitContainer` object that manages the Core Data stack.
     let container: NSPersistentCloudKitContainer
+    let defaults: UserDefaults
+    var fullVersionUnlocked: Bool {
+        get {
+            defaults.bool(forKey: "fullVersionUnlocked")
+        }
+        set {
+            defaults.set(newValue, forKey: "fullVersionUnlocked")
+        }
+    }
     /// Initializes a `DataController` object with an optional flag to indicate
     /// if the persistent store should be in-memory.
-        /// - Parameter inMemory: A boolean value indicating if the persistent store should be in-memory.
-    init(inMemory: Bool = false) {
+    /// - Parameter inMemory: A boolean value indicating if the persistent store should be in-memory.
+    init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
+        self.defaults = defaults
         container = NSPersistentCloudKitContainer(name: "Main", managedObjectModel: Self.model)
         // If inMemory flag is set to true, set the URL of the persistent store description
         // to "/dev/null" to create an in-memory store.
@@ -36,8 +48,14 @@ final class DataController: ObservableObject {
         }
     }
     /// Deletes a given `NSManagedObject` from the view context of the `NSPersistentCloudKitContainer` object.
-        /// - Parameter object: The `NSManagedObject` to be deleted.
+    /// - Parameter object: The `NSManagedObject` to be deleted.
     func delete(_ object: NSManagedObject) {
+        let id = object.objectID.uriRepresentation().absoluteString
+        if object is Indicator {
+            CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [id])
+        } else {
+            CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [id])
+        }
         container.viewContext.delete(object)
     }
     /// Deletes all `Unit`, `Outcome`, and `Indicator`
@@ -54,15 +72,15 @@ final class DataController: ObservableObject {
         _ = try? container.viewContext.execute(batchDeleteRequest3)
     }
     /// Returns the count of the objects for a given `NSFetchRequest` object.
-        /// - Parameter fetchRequest: The `NSFetchRequest` object whose count is to be returned.
+    /// - Parameter fetchRequest: The `NSFetchRequest` object whose count is to be returned.
     /// - Returns: The count of the objects for the given NSFetchRequest object.
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
     /// Returns a boolean value indicating if the user has earned the given award.
-        /// - Parameters:
-        ///   - award: The `Award` object to be checked.
-        /// - Returns: A boolean value indicating if the user has earned the given award.
+    /// - Parameters:
+    ///   - award: The `Award` object to be checked.
+    /// - Returns: A boolean value indicating if the user has earned the given award.
     func hasEarned(award: Award) -> Bool {
         switch award.criterion {
         case "indicators":
@@ -79,7 +97,7 @@ final class DataController: ObservableObject {
         }
     }
     /// Creates sample data for the app.
-        /// - Throws: An error if there is a problem creating the sample data.
+    /// - Throws: An error if there is a problem creating the sample data.
     func createSampleData() throws {
         let viewContext = container.viewContext
         for unitCounter in 1...1 {
@@ -107,6 +125,83 @@ final class DataController: ObservableObject {
             }
         }
         try viewContext.save()
+    }
+    func addReminders(for outcome: Outcome, completion: @escaping (Bool) -> Void) {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                self.requestNotifications { success in
+                    if success {
+                        self.placeReminders(for: outcome, completion: completion)
+                    } else {
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
+                    }
+                }
+            case .authorized:
+                self.placeReminders(for: outcome, completion: completion)
+            default:
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
+        }
+    }
+    func removeReminders(for outcome: Outcome) {
+        let center = UNUserNotificationCenter.current()
+        let id = outcome.objectID.uriRepresentation().absoluteString
+        center.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    private func requestNotifications(completion: @escaping (Bool) -> Void) {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
+            completion(granted)
+        }
+    }
+    private func placeReminders(for outcome: Outcome, completion: @escaping (Bool) -> Void) {
+        let content = UNMutableNotificationContent()
+        content.sound = .default
+        content.title = outcome.outcomeTitle
+        if let outcomeDetail = outcome.detail {
+            content.subtitle = outcomeDetail
+        }
+        let components = Calendar.current.dateComponents([.hour, .minute], from: outcome.reminderTime ?? Date.now)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let id = outcome.objectID.uriRepresentation().absoluteString
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            DispatchQueue.main.async {
+                if error == nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    // Spotlight
+    func update(_ indicator: Indicator) {
+        let indicatorID = indicator.objectID.uriRepresentation().absoluteString
+        let outcomeID = indicator.outcome?.objectID.uriRepresentation().absoluteString
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.title = indicator.title
+        attributeSet.contentDescription = indicator.detail
+        let searchableIndicator = CSSearchableItem(
+            uniqueIdentifier: indicatorID,
+            domainIdentifier: outcomeID,
+            attributeSet: attributeSet
+        )
+        CSSearchableIndex.default().indexSearchableItems([searchableIndicator])
+        save()
+    }
+    func indicator(with uniqueIdentifier: String) -> Indicator? {
+        guard let url = URL(string: uniqueIdentifier) else { return nil }
+        guard let id = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else {
+            return nil
+        }
+        return try? container.viewContext.existingObject(with: id) as? Indicator
     }
     // Declare a private static constant 'model' of type NSManagedObjectModel
     private static let model: NSManagedObjectModel = {

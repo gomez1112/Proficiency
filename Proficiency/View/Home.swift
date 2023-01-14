@@ -5,8 +5,9 @@
 //  Created by Gerard Gomez on 1/2/23.
 //
 
-import SwiftUI
 import CoreData
+import CoreSpotlight
+import SwiftUI
 
 struct Home: View {
     @StateObject private var viewModel: ViewModel
@@ -33,15 +34,24 @@ struct Home: View {
                     .padding(.horizontal)
                 }
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightIndicator)
             .background(Color.systemGroupedBackground.ignoresSafeArea())
             .toolbar {
                 Button("Add Data", action: viewModel.addSampleData)
             }
             .navigationTitle("Home")
+            if let indicator = viewModel.selectedIndicator {
+                NavigationLink(destination: EditIndicator(indicator: indicator), label: EmptyView.init)
+            }
         }
     }
     private var outcomeRows: [GridItem] {
         [GridItem(.fixed(100))]
+    }
+    private func loadSpotlightIndicator(_ userActivity: NSUserActivity) {
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            viewModel.selectedIndicator(with: uniqueIdentifier)
+        }
     }
 }
 

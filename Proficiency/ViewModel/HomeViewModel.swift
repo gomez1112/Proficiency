@@ -14,6 +14,7 @@ extension Home {
         private let indicatorsController: NSFetchedResultsController<Indicator>
         @Published var outcomes = [Outcome]()
         @Published var indicators = [Indicator]()
+        @Published var selectedIndicator: Indicator?
         let dataController: DataController
         var upNext: ArraySlice<Indicator> {
             indicators.prefix(3)
@@ -72,6 +73,9 @@ extension Home {
         func addSampleData() {
             dataController.deleteAll()
             try? dataController.createSampleData()
+        }
+        func selectedIndicator(with identifier: String) {
+            selectedIndicator = dataController.indicator(with: identifier)
         }
     }
 }

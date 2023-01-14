@@ -14,6 +14,9 @@ struct EditOutcome: View {
     @State private var detail: String
     @State private var color: String
     @State private var showingDeleteConfirm = false
+    @State private var remindMe: Bool
+    @State private var reminderTime: Date
+    @State private var showingNotificationsError = false
     @ObservedObject var outcome: Outcome
     private let colorColumns = [
         GridItem(.adaptive(minimum: 44))
@@ -23,6 +26,19 @@ struct EditOutcome: View {
         _title = State(wrappedValue: outcome.outcomeTitle)
         _detail = State(wrappedValue: outcome.outcomeDetail)
         _color = State(wrappedValue: outcome.outcomeColor)
+        if let outcomeReminderTime = outcome.reminderTime {
+            _reminderTime = State(wrappedValue: outcomeReminderTime)
+            _remindMe = State(wrappedValue: true)
+        } else {
+            _reminderTime = State(wrappedValue: Date())
+            _remindMe = State(wrappedValue: false)
+        }
+    }
+    private func toggleClosed() {
+        outcome.closed.toggle()
+        if outcome.closed {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
     }
     var body: some View {
         Form {
@@ -36,12 +52,23 @@ struct EditOutcome: View {
                 }
                 .padding(.vertical)
             }
+            Section(header: Text("Outcome reminders")) {
+                Toggle("Show reminders", isOn: $remindMe.animation().onChange(update))
+                    .alert("Oops!", isPresented: $showingNotificationsError) {
+                    } message: {
+                        Text("There was a problem. Please check you have notifications enabled.")
+                    }
+                if remindMe {
+                    DatePicker(
+                        "Reminder time",
+                        selection: $reminderTime.onChange(update),
+                        displayedComponents: .hourAndMinute
+                    )
+                }
+            }
             // swiftlint:disable:next line_length
             Section(footer: Text("Closing a outcome moves it from the Open to Closed tab; deleting it removes the outcome completely.")) {
-                Button(outcome.closed ? "Reopen this outcome" : "Close this outcome") {
-                    outcome.closed.toggle()
-                    update()
-                }
+                Button(outcome.closed ? "Reopen this outcome" : "Close this outcome", action: toggleClosed)
                 Button("Delete this outcome") {
                     showingDeleteConfirm.toggle()
                 }
@@ -60,6 +87,25 @@ struct EditOutcome: View {
         outcome.title = title
         outcome.detail = detail
         outcome.color = color
+        if remindMe {
+            outcome.reminderTime = reminderTime
+            dataController.addReminders(for: outcome) { success in
+                if !success {
+                    outcome.reminderTime = nil
+                    remindMe = false
+                    showingNotificationsError = true
+                }
+            }
+        } else {
+            outcome.reminderTime = nil
+            dataController.removeReminders(for: outcome)
+        }
+    }
+    private func showAppSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl)
+        }
     }
     private func delete() {
         dataController.delete(outcome)
