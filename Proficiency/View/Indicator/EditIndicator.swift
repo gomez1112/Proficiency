@@ -42,7 +42,7 @@ struct EditIndicator: View {
         .navigationTitle("Edit Indicator")
         .onDisappear(perform: dataController.save)
     }
-    func update() {
+    private func update() {
         indicator.outcome?.objectWillChange.send()
         indicator.title = title
         indicator.detail = detail

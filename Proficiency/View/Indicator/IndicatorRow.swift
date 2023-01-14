@@ -9,42 +9,27 @@ import SwiftUI
 
 struct IndicatorRow: View {
     @ObservedObject var indicator: Indicator
-    @ObservedObject var outcome: Outcome
+    @StateObject private var viewModel: ViewModel
+    init(outcome: Outcome, indicator: Indicator) {
+        let viewModel = ViewModel(outcome: outcome, indicator: indicator)
+        _viewModel = StateObject(wrappedValue: viewModel)
+        self.indicator = indicator
+    }
     var body: some View {
         NavigationLink(destination: EditIndicator(indicator: indicator)) {
             Label {
-                Text(indicator.indicatorTitle)
+                Text(viewModel.title)
             } icon: {
-                icon
+                Image(systemName: viewModel.icon)
+                    .foregroundColor(viewModel.color.map { Color($0)} ?? .clear)
             }
-            .accessibilityLabel(label)
         }
-    }
-    var icon: some View {
-        if indicator.completed {
-            return Image(systemName: "checkmark.circle")
-                .foregroundColor(Color(outcome.outcomeColor))
-        } else if indicator.proficiency == 1 {
-            return Image(systemName: "exclamationmark.triangle")
-                .foregroundColor(Color(outcome.outcomeColor))
-        } else {
-            return Image(systemName: "checkmark.circle")
-                .foregroundColor(.clear)
-        }
-    }
-    var label: Text {
-        if indicator.completed {
-            return Text("\(indicator.indicatorTitle), completed")
-        } else if indicator.proficiency == 0 {
-            return Text("\(indicator.indicatorTitle), high priority.")
-        } else {
-            return Text(indicator.indicatorTitle)
-        }
+        .accessibilityLabel(viewModel.label)
     }
 }
 
 struct IndicatorRow_Previews: PreviewProvider {
     static var previews: some View {
-        IndicatorRow(indicator: .example, outcome: .example)
+        IndicatorRow(outcome: .example, indicator: .example)
     }
 }

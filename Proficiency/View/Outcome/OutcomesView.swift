@@ -8,32 +8,24 @@
 import SwiftUI
 
 struct OutcomesView: View {
-    @EnvironmentObject private var dataController: DataController
-    @Environment(\.managedObjectContext) private var managedObjectContext
+    @StateObject private var viewModel: ViewModel
     @State private var showingsortOrder = false
-    @State private var sortOrder = Indicator.SortOrder.optimized
     static let openTag: Tag? = .open
     static let closedTag: Tag? = .closed
-    let showClosedOutcomes: Bool
-    let outcomes: FetchRequest<Outcome>
-    init(showClosedOutcomes: Bool) {
-        self.showClosedOutcomes = showClosedOutcomes
-        outcomes = FetchRequest<Outcome>(entity: Outcome.entity(),
-                                         sortDescriptors: [NSSortDescriptor(keyPath: \Outcome.createdAt,
-                                                                            ascending: false)],
-                                         predicate: NSPredicate(format: "closed = %d",
-                                                                showClosedOutcomes))
+    init(dataController: DataController, showClosedOutcomes: Bool) {
+        let viewModel = ViewModel(dataController: dataController, showClosedOutcomes: showClosedOutcomes)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     var body: some View {
         NavigationStack {
             Group {
-                if outcomes.wrappedValue.isEmpty {
+                if viewModel.outcomes.isEmpty {
                     SelectSomething()
                 } else {
                     outcomesList
                 }
             }
-            .navigationTitle(showClosedOutcomes ? "Closed" : "Open")
+            .navigationTitle(viewModel.showClosedOutcomes ? "Closed" : "Open")
             .navigationDestination(for: Indicator.self) { indicator in
                 EditIndicator(indicator: indicator)
             }
@@ -42,16 +34,20 @@ struct OutcomesView: View {
                 sortOrderToolbarItem
             }
             .confirmationDialog("Sort indicators", isPresented: $showingsortOrder) {
-                Button("Optimized") { sortOrder = .optimized }
-                Button("Creation Date") { sortOrder = .createdAt }
-                Button("Title") { sortOrder = .title }
+                Button("Optimized") { viewModel.sortOrder = .optimized }
+                Button("Creation Date") { viewModel.sortOrder = .createdAt }
+                Button("Title") { viewModel.sortOrder = .title }
             }
         }
     }
-    var addOutcomeToolbarItem: some ToolbarContent {
+    private var addOutcomeToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
-            if !showClosedOutcomes {
-                Button(action: addOutcome) {
+            if !viewModel.showClosedOutcomes {
+                Button {
+                    withAnimation {
+                        viewModel.addOutcome()
+                    }
+                } label: {
                     if UIAccessibility.isVoiceOverRunning {
                         Text("Add Outcome")
                     } else {
@@ -61,7 +57,7 @@ struct OutcomesView: View {
             }
         }
     }
-    var sortOrderToolbarItem: some ToolbarContent {
+    private var sortOrderToolbarItem: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             Button {
                 showingsortOrder.toggle()
@@ -70,19 +66,21 @@ struct OutcomesView: View {
             }
         }
     }
-    var outcomesList: some View {
+    private var outcomesList: some View {
         List {
-            ForEach(outcomes.wrappedValue) { outcome in
+            ForEach(viewModel.outcomes) { outcome in
                 Section(header: OutcomeHeader(outcome: outcome)) {
-                    ForEach(outcome.outcomeIndicators(using: sortOrder)) { indicator in
-                        IndicatorRow(indicator: indicator, outcome: outcome)
+                    ForEach(outcome.outcomeIndicators(using: viewModel.sortOrder)) { indicator in
+                        IndicatorRow(outcome: outcome, indicator: indicator)
                     }
                     .onDelete { offsets in
-                        delete(offsets, from: outcome)
+                        viewModel.delete(offsets, from: outcome)
                     }
-                    if !showClosedOutcomes {
+                    if !viewModel.showClosedOutcomes {
                         Button {
-                            addIndicator(to: outcome)
+                            withAnimation {
+                                viewModel.addIndicator(to: outcome)
+                            }
                         } label: {
                             Label("Add New Indicator", systemImage: "plus")
                         }
@@ -92,37 +90,11 @@ struct OutcomesView: View {
         }
         .listStyle(.insetGrouped)
     }
-    func addOutcome() {
-        withAnimation {
-            let outcome = Outcome(context: managedObjectContext)
-            outcome.closed = false
-            outcome.createdAt = Date()
-            dataController.save()
-        }
-    }
-    func addIndicator(to outcome: Outcome) {
-        withAnimation {
-            let indicator = Indicator(context: managedObjectContext)
-            indicator.outcome = outcome
-            indicator.createdAt = Date()
-            dataController.save()
-        }
-    }
-    func delete(_ offsets: IndexSet, from outcome: Outcome) {
-        let allIndicators = outcome.outcomeIndicators(using: sortOrder)
-        for offset in offsets {
-            let indicator = allIndicators[offset]
-            dataController.delete(indicator)
-        }
-        dataController.save()
-    }
 }
 
 struct OutcomesView_Previews: PreviewProvider {
     static var dataController = DataController.preview
     static var previews: some View {
-        OutcomesView(showClosedOutcomes: false)
-            .environment(\.managedObjectContext, dataController.container.viewContext)
-            .environmentObject(dataController)
+        OutcomesView(dataController: DataController.preview, showClosedOutcomes: false)
     }
 }

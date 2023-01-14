@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Extension for the Indicator model class
 extension Indicator {
     var indicatorTitle: String {
         title ?? "New Indicator"

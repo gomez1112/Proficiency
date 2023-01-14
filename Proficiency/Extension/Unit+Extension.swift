@@ -29,7 +29,7 @@ extension Unit {
         }
     }
     static var example: Unit {
-        let controller = DataController(inMemory: true)
+        let controller = DataController.preview
         let viewContext = controller.container.viewContext
         let unit = Unit(context: viewContext)
         unit.title = "Example Unit"

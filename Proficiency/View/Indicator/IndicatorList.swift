@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IndicatorList: View {
     let title: LocalizedStringKey
-    let indicators: FetchedResults<Indicator>.SubSequence
+    let indicators: ArraySlice<Indicator>
     var body: some View {
         if indicators.isEmpty {
             EmptyView()
@@ -22,7 +22,7 @@ struct IndicatorList: View {
                 NavigationLink(destination: EditIndicator(indicator: indicator)) {
                     HStack(spacing: 20) {
                         Circle()
-                            .stroke(Color(indicator.outcome?.outcomeColor ?? "Light Blue"), lineWidth: 3)
+                            .stroke(Color(indicator.outcome?.outcomeColor ?? Color.defaultColor), lineWidth: 3)
                             .frame(width: 44, height: 44)
                         VStack(alignment: .leading) {
                             Text(indicator.indicatorTitle)

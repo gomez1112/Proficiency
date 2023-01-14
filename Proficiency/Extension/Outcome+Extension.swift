@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+// Extension for the Outcome model class
 extension Outcome {
     var outcomeTitle: String {
         title ?? "New Outcome"
@@ -20,6 +20,7 @@ extension Outcome {
     var outcomeCreatedAt: Date {
         createdAt ?? Date()
     }
+    // Computed property that returns the completion amount of the outcome as a percentage
     var completionAmount: Double {
         let originalIndicators = indicators?.allObjects as? [Indicator] ?? []
         guard !originalIndicators.isEmpty else { return 0 }
@@ -44,6 +45,7 @@ extension Outcome {
             return $0.indicatorCreateAt < $1.indicatorCreateAt
         }
     }
+    // Method that returns the outcome's indicators sorted using the specified sort order
     func outcomeIndicators(using sortOrder: Indicator.SortOrder) -> [Indicator] {
         switch sortOrder {
         case .title:
@@ -60,7 +62,7 @@ extension Outcome {
         let outcome = Outcome(context: viewContext)
         outcome.title = "Example Outcome"
         outcome.detail = "This is an example an outcome."
-        outcome.closed = Bool.random()
+        outcome.closed = true
         outcome.createdAt = Date()
         return outcome
     }

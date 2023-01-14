@@ -14,8 +14,8 @@ struct EditOutcome: View {
     @State private var detail: String
     @State private var color: String
     @State private var showingDeleteConfirm = false
-    let outcome: Outcome
-    let colorColumns = [
+    @ObservedObject var outcome: Outcome
+    private let colorColumns = [
         GridItem(.adaptive(minimum: 44))
     ]
     init(outcome: Outcome) {
@@ -56,16 +56,16 @@ struct EditOutcome: View {
             Text("Are you sure you want to delete this outcome? You will also delete all the indicators it contain.")
         }
     }
-    func update() {
+    private func update() {
         outcome.title = title
         outcome.detail = detail
         outcome.color = color
     }
-    func delete() {
+    private func delete() {
         dataController.delete(outcome)
         dismiss()
     }
-    func colorButton(for indicator: String) -> some View {
+    private func colorButton(for indicator: String) -> some View {
         ZStack {
             Color(indicator)
                 .aspectRatio(1, contentMode: .fit)
