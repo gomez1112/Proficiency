@@ -25,6 +25,9 @@ struct OutcomesView: View {
                     outcomesList
                 }
             }
+            .sheet(isPresented: $viewModel.showingUnlockView) {
+                UnlockView()
+            }
             .navigationTitle(viewModel.showClosedOutcomes ? "Closed" : "Open")
             .navigationDestination(for: Indicator.self) { indicator in
                 EditIndicator(indicator: indicator)

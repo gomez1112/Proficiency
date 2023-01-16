@@ -15,10 +15,22 @@ final class DataController: ObservableObject {
     /// The `NSPersistentCloudKitContainer` object that manages the Core Data stack.
     let container: NSPersistentCloudKitContainer
     let defaults: UserDefaults
+    /**
+     A computed property that allows easy access to the full version unlock status stored in UserDefaults.
+     - Note: Setting the value to true will unlock the full version of the app, while setting it to false will lock it.
+     */
     var fullVersionUnlocked: Bool {
+        /**
+         Retrieves the full version unlock status from UserDefaults
+         - Returns: a Bool indicating the status of the full version unlock
+         */
         get {
             defaults.bool(forKey: "fullVersionUnlocked")
         }
+        /**
+         Sets the full version unlock status in UserDefaults
+         - Parameter newValue: a Bool indicating the new status of the full version unlock
+         */
         set {
             defaults.set(newValue, forKey: "fullVersionUnlocked")
         }
@@ -36,9 +48,30 @@ final class DataController: ObservableObject {
         }
         // Load the persistent stores and check for any errors. If there is an error, log a fatal error.
         container.loadPersistentStores { _, error in
-            if let error {
+            if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
+            #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                self.deleteAll()
+            }
+            #endif
+        }
+    }
+    /**
+     Add a new outcome to the data controller.
+     */
+    @discardableResult
+    func addOutcome() -> Bool {
+        let canCreate = fullVersionUnlocked || count(for: Outcome.fetchRequest()) < 3
+        if canCreate {
+            let outcome = Outcome(context: container.viewContext)
+            outcome.closed = false
+            outcome.createdAt = Date()
+            save()
+            return true
+        } else {
+            return false
         }
     }
     /// Saves the changes in the view context of the `NSPersistentCloudKitContainer` object.
@@ -126,6 +159,11 @@ final class DataController: ObservableObject {
         }
         try viewContext.save()
     }
+    /// Adds reminders for a given outcome by using UNUserNotificationCenter.
+    /// - Parameters:
+    ///    - outcome: The outcome for which reminders are to be added.
+    ///    - completion: A closure that is called when the reminders are added.
+    ///    The closure takes a single Bool argument indicating whether the reminders were added successfully or not.
     func addReminders(for outcome: Outcome, completion: @escaping (Bool) -> Void) {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { settings in
@@ -149,17 +187,30 @@ final class DataController: ObservableObject {
             }
         }
     }
+    /// Remove reminders for a given outcome by using UNUserNotificationCenter.
+    /// - Parameters:
+    ///     - outcome: The outcome for which reminders are to be removed.
     func removeReminders(for outcome: Outcome) {
         let center = UNUserNotificationCenter.current()
         let id = outcome.objectID.uriRepresentation().absoluteString
         center.removePendingNotificationRequests(withIdentifiers: [id])
     }
+    /// Request permission to send notifications to the user
+    /// - Parameters:
+    ///     - completion: A closure that is called when
+    ///     the permission request completes. The closure takes a single Bool argument
+    ///     indicating whether the permission was granted or not.
     private func requestNotifications(completion: @escaping (Bool) -> Void) {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
             completion(granted)
         }
     }
+    /// Place reminders for a given outcome by using UNUserNotificationCenter.
+    /// - Parameters:
+    ///     - outcome: The outcome for which reminders are to be placed.
+    ///     - completion: A closure that is called when the reminders are placed.
+    ///     The closure takes a single Bool argument indicating whether the reminders were placed successfully or not.
     private func placeReminders(for outcome: Outcome, completion: @escaping (Bool) -> Void) {
         let content = UNMutableNotificationContent()
         content.sound = .default
@@ -181,7 +232,9 @@ final class DataController: ObservableObject {
             }
         }
     }
-    // Spotlight
+    /// Update the given indicator in the search index.
+    /// - Parameters:
+    ///    - indicator: The indicator to update in the search index.
     func update(_ indicator: Indicator) {
         let indicatorID = indicator.objectID.uriRepresentation().absoluteString
         let outcomeID = indicator.outcome?.objectID.uriRepresentation().absoluteString
@@ -196,6 +249,13 @@ final class DataController: ObservableObject {
         CSSearchableIndex.default().indexSearchableItems([searchableIndicator])
         save()
     }
+    /**
+     Retrieve an indicator with the given unique identifier from the search index.
+     - Parameters:
+     - uniqueIdentifier: A string representing the unique identifier of the indicator to retrieve.
+     - Returns:
+     An optional Indicator that matches the given unique identifier.
+     */
     func indicator(with uniqueIdentifier: String) -> Indicator? {
         guard let url = URL(string: uniqueIdentifier) else { return nil }
         guard let id = container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url) else {

@@ -8,6 +8,7 @@
 import StoreKit
 
 final class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+    // Enum to represent the different states of the product request
     enum RequestState {
         case loading
         case loaded(SKProduct)
@@ -15,6 +16,7 @@ final class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObser
         case purchased
         case deferred
     }
+    // Enum to represent errors that can happen when interacting with the store
     private enum StoreError: Error {
         case invalidIdentifiers, missingProduct
     }
@@ -39,6 +41,25 @@ final class UnlockManager: NSObject, ObservableObject, SKPaymentTransactionObser
     var canMakePayments: Bool {
         SKPaymentQueue.canMakePayments()
     }
+    /**
+     paymentQueue is the observer of the SKPaymentQueue.
+     The function is called when the transactions in the queue are updated.
+     
+     - Parameters:
+        - queue: The SKPaymentQueue being observed
+        - transactions: The array of SKPaymentTransactions that were updated in the queue
+     
+     - Functionality:
+        - The function loops through the updated transactions and
+     checks the transaction state.
+        - If the transaction state is .purchased or .restored,
+     the dataController's fullVersionUnlocked property is set to true,
+     the requestState is set to .purchased and the transaction is finished.
+        - If the transaction state is .failed, the requestState is set to .loaded
+     with the first loaded product, or set to .failed with the transaction error. The transaction is then finished.
+        - If the transaction state is .deferred, the requestState is set to .deferred
+        - If the transaction state is any other value, the function does nothing.
+     */
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         DispatchQueue.main.async { [self] in
             for transaction in transactions {

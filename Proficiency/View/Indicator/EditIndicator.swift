@@ -45,6 +45,16 @@ struct EditIndicator: View {
     func save() {
         dataController.update(indicator)
     }
+    /**
+        Update the properties of the indicator object.
+        Sends an objectWillChange signal to observers of the object, such as a SwiftUI view,
+        to refresh the view and reflect the changes made.
+        - Parameters:
+            - title: The new title of the indicator
+            - detail: The new detail of the indicator
+            - proficiency: The new proficiency of the indicator
+            - completed: The new completion status of the indicator
+    */
     private func update() {
         indicator.outcome?.objectWillChange.send()
         indicator.title = title

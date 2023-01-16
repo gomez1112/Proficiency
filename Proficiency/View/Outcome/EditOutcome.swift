@@ -42,38 +42,10 @@ struct EditOutcome: View {
     }
     var body: some View {
         Form {
-            Section(header: Text("Basic settings")) {
-                TextField("Outcome name", text: $title.onChange(update))
-                TextField("Description of this outcome", text: $detail.onChange(update))
-            }
-            Section(header: Text("Custom outcome color")) {
-                LazyVGrid(columns: colorColumns) {
-                    ForEach(Outcome.colors, id: \.self, content: colorButton)
-                }
-                .padding(.vertical)
-            }
-            Section(header: Text("Outcome reminders")) {
-                Toggle("Show reminders", isOn: $remindMe.animation().onChange(update))
-                    .alert("Oops!", isPresented: $showingNotificationsError) {
-                    } message: {
-                        Text("There was a problem. Please check you have notifications enabled.")
-                    }
-                if remindMe {
-                    DatePicker(
-                        "Reminder time",
-                        selection: $reminderTime.onChange(update),
-                        displayedComponents: .hourAndMinute
-                    )
-                }
-            }
-            // swiftlint:disable:next line_length
-            Section(footer: Text("Closing a outcome moves it from the Open to Closed tab; deleting it removes the outcome completely.")) {
-                Button(outcome.closed ? "Reopen this outcome" : "Close this outcome", action: toggleClosed)
-                Button("Delete this outcome") {
-                    showingDeleteConfirm.toggle()
-                }
-                .tint(.red)
-            }
+            basicSettingsSection
+            customColorSection
+            reminderSection
+            deleteSection
         }
         .navigationTitle("Edit Outcome")
         .onDisappear(perform: dataController.save)
@@ -81,6 +53,46 @@ struct EditOutcome: View {
             Button("Delete", role: .destructive, action: delete)
         } message: {
             Text("Are you sure you want to delete this outcome? You will also delete all the indicators it contain.")
+        }
+    }
+    private var basicSettingsSection: some View {
+        Section(header: Text("Basic settings")) {
+            TextField("Outcome name", text: $title.onChange(update))
+            TextField("Description of this outcome", text: $detail.onChange(update))
+        }
+    }
+    private var customColorSection: some View {
+        Section(header: Text("Custom outcome color")) {
+            LazyVGrid(columns: colorColumns) {
+                ForEach(Outcome.colors, id: \.self, content: colorButton)
+            }
+            .padding(.vertical)
+        }
+    }
+    private var reminderSection: some View {
+        Section(header: Text("Outcome reminders")) {
+            Toggle("Show reminders", isOn: $remindMe.animation().onChange(update))
+                .alert("Oops!", isPresented: $showingNotificationsError) {
+                } message: {
+                    Text("There was a problem. Please check you have notifications enabled.")
+                }
+            if remindMe {
+                DatePicker(
+                    "Reminder time",
+                    selection: $reminderTime.onChange(update),
+                    displayedComponents: .hourAndMinute
+                )
+            }
+        }
+    }
+    private var deleteSection: some View {
+        // swiftlint:disable:next line_length
+        Section(footer: Text("Closing a outcome moves it from the Open to Closed tab; deleting it removes the outcome completely.")) {
+            Button(outcome.closed ? "Reopen this outcome" : "Close this outcome", action: toggleClosed)
+            Button("Delete this outcome") {
+                showingDeleteConfirm.toggle()
+            }
+            .tint(.red)
         }
     }
     private func update() {

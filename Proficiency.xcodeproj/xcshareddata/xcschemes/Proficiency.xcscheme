@@ -50,6 +50,17 @@
                ReferencedContainer = "container:Proficiency.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CC2F719E297443A900566382"
+               BuildableName = "ProficiencyUITests.xctest"
+               BlueprintName = "ProficiencyUITests"
+               ReferencedContainer = "container:Proficiency.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -74,7 +85,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
-         identifier = "../../Proficiency/ViewModel/Configuration.storekit">
+         identifier = "../../Proficiency/Configuration/Configuration.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction

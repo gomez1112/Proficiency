@@ -26,6 +26,8 @@
 		CC0F3B102963DFAB00972579 /* OutcomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3B0F2963DFAB00972579 /* OutcomeHeader.swift */; };
 		CC0F3B122963E12800972579 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC0F3B112963E12800972579 /* Colors.xcassets */; };
 		CC0F3B142963E30600972579 /* EditOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3B132963E30600972579 /* EditOutcome.swift */; };
+		CC2F71A2297443A900566382 /* ProficiencyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F71A1297443A900566382 /* ProficiencyUITests.swift */; };
+		CC2F71A4297443A900566382 /* ProficiencyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F71A3297443A900566382 /* ProficiencyUITestsLaunchTests.swift */; };
 		CC574A3B2963B09F0021F3FF /* ProficiencyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */; };
 		CC574A3D2963B09F0021F3FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A3C2963B09F0021F3FF /* ContentView.swift */; };
 		CC574A3F2963B0A00021F3FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC574A3E2963B0A00021F3FF /* Assets.xcassets */; };
@@ -34,6 +36,10 @@
 		CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4C2963B6D90021F3FF /* DataController.swift */; };
 		CC574A4F2963BD480021F3FF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4E2963BD480021F3FF /* Home.swift */; };
 		CC574A512963BDA20021F3FF /* OutcomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A502963BDA20021F3FF /* OutcomesView.swift */; };
+		CCCA9CCD2975747F00878FA6 /* SKProduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CCC2975747F00878FA6 /* SKProduct+Extension.swift */; };
+		CCCA9CD0297574EF00878FA6 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CCF297574EF00878FA6 /* PurchaseButton.swift */; };
+		CCCA9CD22975763700878FA6 /* ProductVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CD12975763700878FA6 /* ProductVIew.swift */; };
+		CCCA9CD42975782A00878FA6 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CD32975782A00878FA6 /* UnlockView.swift */; };
 		CCF6908E296A0A2000EE80E3 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */; };
 		CCF69090296A131F00EE80E3 /* SelectSomething.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6908F296A131F00EE80E3 /* SelectSomething.swift */; };
 		CCF69092296A13B700EE80E3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */; };
@@ -52,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CC2F71A5297443A900566382 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC574A2F2963B09F0021F3FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC574A362963B09F0021F3FF;
+			remoteInfo = Proficiency;
+		};
 		CCF690B0296A69EF00EE80E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CC574A2F2963B09F0021F3FF /* Project object */;
@@ -70,7 +83,7 @@
 		CC0565CE2973509F00D60E08 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CC0565D02973548200D60E08 /* IndicatorRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorRowViewModel.swift; sourceTree = "<group>"; };
 		CC0565D229736A0F00D60E08 /* UnlockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockManager.swift; sourceTree = "<group>"; };
-		CC0565D429736AFB00D60E08 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		CC0565D52973910400D60E08 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		CC0F3AFD2963C22E00972579 /* Indicator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Indicator+Extension.swift"; sourceTree = "<group>"; };
 		CC0F3AFF2963C2FB00972579 /* Outcome+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Outcome+Extension.swift"; sourceTree = "<group>"; };
 		CC0F3B012963D0F100972579 /* Unit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Unit+Extension.swift"; sourceTree = "<group>"; };
@@ -82,6 +95,9 @@
 		CC0F3B0F2963DFAB00972579 /* OutcomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeHeader.swift; sourceTree = "<group>"; };
 		CC0F3B112963E12800972579 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CC0F3B132963E30600972579 /* EditOutcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOutcome.swift; sourceTree = "<group>"; };
+		CC2F719F297443A900566382 /* ProficiencyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProficiencyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC2F71A1297443A900566382 /* ProficiencyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyUITests.swift; sourceTree = "<group>"; };
+		CC2F71A3297443A900566382 /* ProficiencyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CC574A372963B09F0021F3FF /* Proficiency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proficiency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyApp.swift; sourceTree = "<group>"; };
 		CC574A3C2963B09F0021F3FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,6 +108,10 @@
 		CC574A4C2963B6D90021F3FF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		CC574A4E2963BD480021F3FF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		CC574A502963BDA20021F3FF /* OutcomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomesView.swift; sourceTree = "<group>"; };
+		CCCA9CCC2975747F00878FA6 /* SKProduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extension.swift"; sourceTree = "<group>"; };
+		CCCA9CCF297574EF00878FA6 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
+		CCCA9CD12975763700878FA6 /* ProductVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVIew.swift; sourceTree = "<group>"; };
+		CCCA9CD32975782A00878FA6 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 		CCF6908F296A131F00EE80E3 /* SelectSomething.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSomething.swift; sourceTree = "<group>"; };
 		CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
@@ -111,6 +131,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CC2F719C297443A900566382 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC574A342963B09F0021F3FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,6 +175,7 @@
 				CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */,
 				CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */,
 				CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */,
+				CCCA9CCC2975747F00878FA6 /* SKProduct+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -170,8 +198,19 @@
 				CC574A4E2963BD480021F3FF /* Home.swift */,
 				CCF6908F296A131F00EE80E3 /* SelectSomething.swift */,
 				CC574A3C2963B09F0021F3FF /* ContentView.swift */,
+				CCCA9CD12975763700878FA6 /* ProductVIew.swift */,
+				CCCA9CD32975782A00878FA6 /* UnlockView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CC2F71A0297443A900566382 /* ProficiencyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CC2F71A1297443A900566382 /* ProficiencyUITests.swift */,
+				CC2F71A3297443A900566382 /* ProficiencyUITestsLaunchTests.swift */,
+			);
+			path = ProficiencyUITests;
 			sourceTree = "<group>";
 		};
 		CC574A2E2963B09F0021F3FF = {
@@ -179,6 +218,7 @@
 			children = (
 				CC574A392963B09F0021F3FF /* Proficiency */,
 				CCF690AD296A69EF00EE80E3 /* ProficiencyTests */,
+				CC2F71A0297443A900566382 /* ProficiencyUITests */,
 				CC574A382963B09F0021F3FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -188,6 +228,7 @@
 			children = (
 				CC574A372963B09F0021F3FF /* Proficiency.app */,
 				CCF690AC296A69EF00EE80E3 /* ProficiencyTests.xctest */,
+				CC2F719F297443A900566382 /* ProficiencyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +236,7 @@
 		CC574A392963B09F0021F3FF /* Proficiency */ = {
 			isa = PBXGroup;
 			children = (
+				CCCA9CCE297574E300878FA6 /* Styles */,
 				CCF690BF296AEB5900EE80E3 /* Constant */,
 				CCF690A4296A689C00EE80E3 /* ViewModel */,
 				CCF690A3296A686900EE80E3 /* Configuration */,
@@ -203,10 +245,8 @@
 				CC0F3B082963D8F900972579 /* View */,
 				CC0F3B032963D50D00972579 /* Model */,
 				CC574A3A2963B09F0021F3FF /* ProficiencyApp.swift */,
-				CC574A492963B3960021F3FF /* Main.xcdatamodeld */,
 				CC574A3E2963B0A00021F3FF /* Assets.xcassets */,
 				CC0F3B112963E12800972579 /* Colors.xcassets */,
-				CC574A402963B0A00021F3FF /* Proficiency.entitlements */,
 				CC574A412963B0A00021F3FF /* Preview Content */,
 			);
 			path = Proficiency;
@@ -218,6 +258,14 @@
 				CC574A422963B0A00021F3FF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CCCA9CCE297574E300878FA6 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				CCCA9CCF297574EF00878FA6 /* PurchaseButton.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		CCF69093296A13EF00EE80E3 /* Resources */ = {
@@ -232,6 +280,9 @@
 		CCF690A3296A686900EE80E3 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				CC574A492963B3960021F3FF /* Main.xcdatamodeld */,
+				CC574A402963B0A00021F3FF /* Proficiency.entitlements */,
+				CC0565D52973910400D60E08 /* Configuration.storekit */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -244,7 +295,6 @@
 				CC0565CC2973497200D60E08 /* OutcomesViewModel.swift */,
 				CC0565CE2973509F00D60E08 /* HomeViewModel.swift */,
 				CC0565D229736A0F00D60E08 /* UnlockManager.swift */,
-				CC0565D429736AFB00D60E08 /* Configuration.storekit */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -303,6 +353,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CC2F719E297443A900566382 /* ProficiencyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC2F71A7297443A900566382 /* Build configuration list for PBXNativeTarget "ProficiencyUITests" */;
+			buildPhases = (
+				CC2F719B297443A900566382 /* Sources */,
+				CC2F719C297443A900566382 /* Frameworks */,
+				CC2F719D297443A900566382 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC2F71A6297443A900566382 /* PBXTargetDependency */,
+			);
+			name = ProficiencyUITests;
+			productName = ProficiencyUITests;
+			productReference = CC2F719F297443A900566382 /* ProficiencyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CC574A362963B09F0021F3FF /* Proficiency */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC574A462963B0A00021F3FF /* Build configuration list for PBXNativeTarget "Proficiency" */;
@@ -349,6 +417,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					CC2F719E297443A900566382 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CC574A362963B09F0021F3FF;
+					};
 					CC574A362963B09F0021F3FF = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -373,11 +445,19 @@
 			targets = (
 				CC574A362963B09F0021F3FF /* Proficiency */,
 				CCF690AB296A69EF00EE80E3 /* ProficiencyTests */,
+				CC2F719E297443A900566382 /* ProficiencyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CC2F719D297443A900566382 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC574A352963B09F0021F3FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,17 +504,29 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CC2F719B297443A900566382 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC2F71A4297443A900566382 /* ProficiencyUITestsLaunchTests.swift in Sources */,
+				CC2F71A2297443A900566382 /* ProficiencyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CC574A332963B09F0021F3FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CC0F3AFE2963C22E00972579 /* Indicator+Extension.swift in Sources */,
+				CCCA9CD22975763700878FA6 /* ProductVIew.swift in Sources */,
 				CCF690A1296A591B00EE80E3 /* OutcomeSummary.swift in Sources */,
 				CC0F3B0A2963D91200972579 /* EditIndicator.swift in Sources */,
 				CCF6908E296A0A2000EE80E3 /* Sequence+Extension.swift in Sources */,
+				CCCA9CCD2975747F00878FA6 /* SKProduct+Extension.swift in Sources */,
 				CC0F3B022963D0F100972579 /* Unit+Extension.swift in Sources */,
 				CC0F3B052963D52600972579 /* Tag.swift in Sources */,
 				CC0565D12973548200D60E08 /* IndicatorRowViewModel.swift in Sources */,
+				CCCA9CD0297574EF00878FA6 /* PurchaseButton.swift in Sources */,
 				CC574A4B2963B3960021F3FF /* Main.xcdatamodeld in Sources */,
 				CCF69090296A131F00EE80E3 /* SelectSomething.swift in Sources */,
 				CCF6909F296A571A00EE80E3 /* IndicatorList.swift in Sources */,
@@ -443,6 +535,7 @@
 				CCF6909B296A1F9100EE80E3 /* Color+Extension.swift in Sources */,
 				CC0565D329736A0F00D60E08 /* UnlockManager.swift in Sources */,
 				CC574A4F2963BD480021F3FF /* Home.swift in Sources */,
+				CCCA9CD42975782A00878FA6 /* UnlockView.swift in Sources */,
 				CC574A3D2963B09F0021F3FF /* ContentView.swift in Sources */,
 				CC0565CD2973497200D60E08 /* OutcomesViewModel.swift in Sources */,
 				CC574A3B2963B09F0021F3FF /* ProficiencyApp.swift in Sources */,
@@ -476,6 +569,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CC2F71A6297443A900566382 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC574A362963B09F0021F3FF /* Proficiency */;
+			targetProxy = CC2F71A5297443A900566382 /* PBXContainerItemProxy */;
+		};
 		CCF690B1296A69EF00EE80E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CC574A362963B09F0021F3FF /* Proficiency */;
@@ -484,6 +582,45 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		CC2F71A8297443A900566382 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88QL9VPLMY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.transfinite.ProficiencyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Proficiency;
+			};
+			name = Debug;
+		};
+		CC2F71A9297443A900566382 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88QL9VPLMY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.transfinite.ProficiencyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Proficiency;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		CC574A442963B0A00021F3FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -598,7 +735,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Proficiency/Proficiency.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Proficiency/Configuration/Proficiency.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Proficiency/Preview Content\"";
@@ -606,6 +743,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -636,7 +774,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Proficiency/Proficiency.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Proficiency/Configuration/Proficiency.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Proficiency/Preview Content\"";
@@ -644,6 +782,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -713,6 +852,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CC2F71A7297443A900566382 /* Build configuration list for PBXNativeTarget "ProficiencyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC2F71A8297443A900566382 /* Debug */,
+				CC2F71A9297443A900566382 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CC574A322963B09F0021F3FF /* Build configuration list for PBXProject "Proficiency" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

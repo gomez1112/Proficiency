@@ -22,13 +22,17 @@ extension Home {
         var moreToExplore: ArraySlice<Indicator> {
             indicators.dropFirst(3)
         }
+        /**
+         Initialize a new view model with the given data controller.
+         - Parameters:
+         - dataController: The data controller to be used by this view model.
+         */
         init(dataController: DataController) {
             self.dataController = dataController
             // Construct a fetch request to show all open projects.
             let outcomeRequest: NSFetchRequest<Outcome> = Outcome.fetchRequest()
             outcomeRequest.predicate = NSPredicate(format: "closed = false")
             outcomeRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Outcome.title, ascending: true)]
-
             outcomesController = NSFetchedResultsController(
                 fetchRequest: outcomeRequest,
                 managedObjectContext: dataController.container.viewContext,
@@ -44,7 +48,6 @@ extension Home {
                                                              subpredicates: [completedPredicate, openPredicate])
             indicatorRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Indicator.proficiency, ascending: false)]
             indicatorRequest.fetchLimit = 10
-
             indicatorsController = NSFetchedResultsController(
                 fetchRequest: indicatorRequest,
                 managedObjectContext: dataController.container.viewContext,
@@ -63,6 +66,11 @@ extension Home {
                 print("Failed to fetch initial data.")
             }
         }
+        /**
+         Delegate method to handle changes in the outcomes and indicators controllers.
+         - Parameters:
+         - controller: The controller that has changed.
+         */
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             if let newIndicators = controller.fetchedObjects as? [Indicator] {
                 indicators = newIndicators

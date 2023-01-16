@@ -20,35 +20,38 @@ struct AwardsView: View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(Award.allAwards) { award in
-                        Button {
-                            selectedAward = award
-                            showingAwardDetails = true
-                        } label: {
-                            Image(systemName: award.image)
-                                .resizable()
-                                .scaledToFit()
-                                .padding()
-                                .frame(width: 100, height: 100)
-                                .foregroundColor(color(for: award))
-                        }
-                        .accessibilityLabel(label(for: award))
-                        .accessibilityHint(Text(award.description))
+                        makeAwardButton(award: award)
                     }
                 }
             }
             .navigationTitle("Awards")
         }
-        .alert(getAwardAlert(), isPresented: $showingAwardDetails) {}
+        .alert(awardAlert, isPresented: $showingAwardDetails) {}
     message: { Text(selectedAward.description) }
+    }
+    private var awardAlert: LocalizedStringKey {
+        dataController.hasEarned(award: selectedAward) ? "Unlocked: \(selectedAward.name)" : "Locked"
+    }
+    private func makeAwardButton(award: Award) -> some View {
+        Button {
+            selectedAward = award
+            showingAwardDetails = true
+        } label: {
+            Image(systemName: award.image)
+                .resizable()
+                .scaledToFit()
+                .padding()
+                .frame(width: 100, height: 100)
+                .foregroundColor(color(for: award))
+        }
+        .accessibilityLabel(label(for: award))
+        .accessibilityHint(Text(award.description))
     }
     private func color(for award: Award) -> Color {
         dataController.hasEarned(award: award) ? Color(award.color) : Color.secondary.opacity(0.5)
     }
     private func label(for award: Award) -> Text {
         Text(dataController.hasEarned(award: award) ? "Unlocked: \(award.name)" : "Locked")
-    }
-    private func getAwardAlert() -> LocalizedStringKey {
-        dataController.hasEarned(award: selectedAward) ? "Unlocked: \(selectedAward.name)" : "Locked"
     }
 }
 

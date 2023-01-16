@@ -45,4 +45,21 @@ final class AwardTests: BaseTestCase {
             dataController.deleteAll()
         }
     }
+    func testHasEarned() {
+        // Create some mock Indicator objects and insert them into the context
+        _ = Indicator(context: dataController.container.viewContext)
+        _ = Indicator(context: dataController.container.viewContext)
+        let indicator3 = Indicator(context: dataController.container.viewContext)
+        indicator3.completed = true
+        try? dataController.container.viewContext.save()
+        // Create a mock Award object with the criterion "indicators" and value 2
+        let indicatorsAward = Award(name: "", description: "", color: "", criterion: "indicators", value: 2, image: "")
+        // Test that the function returns true for the mock Award object
+        XCTAssertTrue(dataController.hasEarned(award: indicatorsAward))
+        // Create a mock Award object with the criterion "complete" and value 2
+        let completedAward = Award(name: "", description: "", color: "", criterion: "complete", value: 2, image: "")
+        // Test that the function returns false for the mock Award object
+        XCTAssertFalse(dataController.hasEarned(award: completedAward))
+    }
+
 }

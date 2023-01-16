@@ -34,7 +34,7 @@ extension Outcome {
     var outcomeIndicators: [Indicator] {
         indicators?.allObjects as? [Indicator] ?? []
     }
-    private var outcomeIndicatorsDefaultSorted: [Indicator] {
+     var outcomeIndicatorsDefaultSorted: [Indicator] {
         outcomeIndicators.sorted {
             if $0.completed != $1.completed {
                 return !$0.completed

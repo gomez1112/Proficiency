@@ -20,18 +20,9 @@ struct Home: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHGrid(rows: outcomeRows) {
-                            ForEach(viewModel.outcomes, content: OutcomeSummary.init)
-                        }
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding([.horizontal, .top])
-                    }
-                    VStack(alignment: .leading) {
-                        IndicatorList(title: "Up nex", indicators: viewModel.upNext)
-                        IndicatorList(title: "More to explore", indicators: viewModel.moreToExplore)
-                    }
-                    .padding(.horizontal)
+                    outcomesGrid
+                    makeIndicatorList(title: "Up next", indicators: viewModel.upNext)
+                    makeIndicatorList(title: "More to explore", indicators: viewModel.moreToExplore)
                 }
             }
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightIndicator)
@@ -44,6 +35,21 @@ struct Home: View {
                 NavigationLink(destination: EditIndicator(indicator: indicator), label: EmptyView.init)
             }
         }
+    }
+    private var outcomesGrid: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHGrid(rows: outcomeRows) {
+                ForEach(viewModel.outcomes, content: OutcomeSummary.init)
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding([.horizontal, .top])
+        }
+    }
+    private func makeIndicatorList(title: LocalizedStringKey, indicators: ArraySlice<Indicator>) -> some View {
+        VStack(alignment: .leading) {
+            IndicatorList(title: title, indicators: indicators)
+        }
+        .padding(.horizontal)
     }
     private var outcomeRows: [GridItem] {
         [GridItem(.fixed(100))]
