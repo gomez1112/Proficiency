@@ -21,8 +21,8 @@ struct Home: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     outcomesGrid
-                    makeIndicatorList(title: "Up next", indicators: viewModel.upNext)
-                    makeIndicatorList(title: "More to explore", indicators: viewModel.moreToExplore)
+                    makeIndicatorList(title: "Up next", indicators: $viewModel.upNext)
+                    makeIndicatorList(title: "More to explore", indicators: $viewModel.moreToExplore)
                 }
             }
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightIndicator)
@@ -45,7 +45,7 @@ struct Home: View {
             .padding([.horizontal, .top])
         }
     }
-    private func makeIndicatorList(title: LocalizedStringKey, indicators: ArraySlice<Indicator>) -> some View {
+    private func makeIndicatorList(title: LocalizedStringKey, indicators: Binding<ArraySlice<Indicator>>) -> some View {
         VStack(alignment: .leading) {
             IndicatorList(title: title, indicators: indicators)
         }

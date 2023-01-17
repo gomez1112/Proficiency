@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IndicatorList: View {
     let title: LocalizedStringKey
-    let indicators: ArraySlice<Indicator>
+    @Binding var indicators: ArraySlice<Indicator>
     var body: some View {
         if indicators.isEmpty {
             EmptyView()

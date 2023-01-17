@@ -5,6 +5,7 @@
 //  Created by Gerard Gomez on 1/2/23.
 //
 
+import CloudKit
 import SwiftUI
 // Extension for the Outcome model class
 extension Outcome {
@@ -79,4 +80,25 @@ extension Outcome {
         "Midnight",
         "Dark Gray",
         "Gray"]
+    func prepareCloudRecords() -> [CKRecord] {
+        let parentName = objectID.uriRepresentation().absoluteString
+        let parentID = CKRecord.ID(recordName: parentName)
+        let parent = CKRecord(recordType: "Outcome", recordID: parentID)
+        parent["title"] = outcomeTitle
+        parent["detail"] = outcomeDetail
+        parent["owner"] = "Gerard"
+        parent["closed"] = closed
+        var records = outcomeIndicatorsDefaultSorted.map { indicator -> CKRecord in
+            let childName = indicator.objectID.uriRepresentation().absoluteString
+            let childID = CKRecord.ID(recordName: childName)
+            let child = CKRecord(recordType: "Indicator", recordID: childID)
+            child["title"] = indicator.indicatorTitle
+            child["detail"] = indicator.indicatorDetail
+            child["completed"] = indicator.completed
+            child["outcome"] = CKRecord.Reference(recordID: parentID, action: .deleteSelf)
+            return child
+        }
+        records.append(parent)
+        return records
+    }
 }

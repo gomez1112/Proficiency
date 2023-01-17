@@ -8,7 +8,7 @@
 import CoreData
 import CoreSpotlight
 import Foundation
-import UserNotifications
+import WidgetKit
 
 /// A `DataController` class is responsible for managing the Core Data stack of the app.
 final class DataController: ObservableObject {
@@ -45,12 +45,18 @@ final class DataController: ObservableObject {
         // to "/dev/null" to create an in-memory store.
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        } else {
+            let groupID = "group.com.transfinite.proficiency"
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID) {
+                container.persistentStoreDescriptions.first?.url = url.appendingPathComponent("Main.sqlite")
+            }
         }
         // Load the persistent stores and check for any errors. If there is an error, log a fatal error.
         container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
+            self.container.viewContext.automaticallyMergesChangesFromParent = true
             #if DEBUG
             if CommandLine.arguments.contains("enable-testing") {
                 self.deleteAll()
@@ -78,6 +84,7 @@ final class DataController: ObservableObject {
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
     /// Deletes a given `NSManagedObject` from the view context of the `NSPersistentCloudKitContainer` object.
@@ -91,43 +98,29 @@ final class DataController: ObservableObject {
         }
         container.viewContext.delete(object)
     }
+    private func delete(_ fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        batchDeleteRequest1.resultType = .resultTypeObjectIDs
+        if let delete = try? container.viewContext.execute(batchDeleteRequest1) as? NSBatchDeleteResult {
+            let changes = [NSDeletedObjectsKey: delete.result as? [NSManagedObjectID] ?? []]
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [container.viewContext])
+        }
+    }
     /// Deletes all `Unit`, `Outcome`, and `Indicator`
     /// objects from the view context of the `NSPersistentCloudKitContainer` object.
     func deleteAll() {
         let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = Unit.fetchRequest()
-        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
-        _ = try? container.viewContext.execute(batchDeleteRequest1)
+        delete(fetchRequest1)
         let fetchRequest2: NSFetchRequest<NSFetchRequestResult> = Outcome.fetchRequest()
-        let batchDeleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
-        _ = try? container.viewContext.execute(batchDeleteRequest2)
+        delete(fetchRequest2)
         let fetchRequest3: NSFetchRequest<NSFetchRequestResult> = Indicator.fetchRequest()
-        let batchDeleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
-        _ = try? container.viewContext.execute(batchDeleteRequest3)
+        delete(fetchRequest3)
     }
     /// Returns the count of the objects for a given `NSFetchRequest` object.
     /// - Parameter fetchRequest: The `NSFetchRequest` object whose count is to be returned.
     /// - Returns: The count of the objects for the given NSFetchRequest object.
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
-    }
-    /// Returns a boolean value indicating if the user has earned the given award.
-    /// - Parameters:
-    ///   - award: The `Award` object to be checked.
-    /// - Returns: A boolean value indicating if the user has earned the given award.
-    func hasEarned(award: Award) -> Bool {
-        switch award.criterion {
-        case "indicators":
-            let fetchRequest: NSFetchRequest<Indicator> = NSFetchRequest(entityName: "Indicator")
-            let awardCount = count(for: fetchRequest)
-            return awardCount >= award.value
-        case "complete":
-            let fetchRequest: NSFetchRequest<Indicator> = NSFetchRequest(entityName: "Indicator")
-            fetchRequest.predicate = NSPredicate(format: "completed = true")
-            let awardCount = count(for: fetchRequest)
-            return awardCount >= award.value
-        default:
-            return false
-        }
     }
     /// Creates sample data for the app.
     /// - Throws: An error if there is a problem creating the sample data.
@@ -159,79 +152,6 @@ final class DataController: ObservableObject {
         }
         try viewContext.save()
     }
-    /// Adds reminders for a given outcome by using UNUserNotificationCenter.
-    /// - Parameters:
-    ///    - outcome: The outcome for which reminders are to be added.
-    ///    - completion: A closure that is called when the reminders are added.
-    ///    The closure takes a single Bool argument indicating whether the reminders were added successfully or not.
-    func addReminders(for outcome: Outcome, completion: @escaping (Bool) -> Void) {
-        let center = UNUserNotificationCenter.current()
-        center.getNotificationSettings { settings in
-            switch settings.authorizationStatus {
-            case .notDetermined:
-                self.requestNotifications { success in
-                    if success {
-                        self.placeReminders(for: outcome, completion: completion)
-                    } else {
-                        DispatchQueue.main.async {
-                            completion(false)
-                        }
-                    }
-                }
-            case .authorized:
-                self.placeReminders(for: outcome, completion: completion)
-            default:
-                DispatchQueue.main.async {
-                    completion(false)
-                }
-            }
-        }
-    }
-    /// Remove reminders for a given outcome by using UNUserNotificationCenter.
-    /// - Parameters:
-    ///     - outcome: The outcome for which reminders are to be removed.
-    func removeReminders(for outcome: Outcome) {
-        let center = UNUserNotificationCenter.current()
-        let id = outcome.objectID.uriRepresentation().absoluteString
-        center.removePendingNotificationRequests(withIdentifiers: [id])
-    }
-    /// Request permission to send notifications to the user
-    /// - Parameters:
-    ///     - completion: A closure that is called when
-    ///     the permission request completes. The closure takes a single Bool argument
-    ///     indicating whether the permission was granted or not.
-    private func requestNotifications(completion: @escaping (Bool) -> Void) {
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { granted, _ in
-            completion(granted)
-        }
-    }
-    /// Place reminders for a given outcome by using UNUserNotificationCenter.
-    /// - Parameters:
-    ///     - outcome: The outcome for which reminders are to be placed.
-    ///     - completion: A closure that is called when the reminders are placed.
-    ///     The closure takes a single Bool argument indicating whether the reminders were placed successfully or not.
-    private func placeReminders(for outcome: Outcome, completion: @escaping (Bool) -> Void) {
-        let content = UNMutableNotificationContent()
-        content.sound = .default
-        content.title = outcome.outcomeTitle
-        if let outcomeDetail = outcome.detail {
-            content.subtitle = outcomeDetail
-        }
-        let components = Calendar.current.dateComponents([.hour, .minute], from: outcome.reminderTime ?? Date.now)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        let id = outcome.objectID.uriRepresentation().absoluteString
-        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { error in
-            DispatchQueue.main.async {
-                if error == nil {
-                    completion(true)
-                } else {
-                    completion(false)
-                }
-            }
-        }
-    }
     /// Update the given indicator in the search index.
     /// - Parameters:
     ///    - indicator: The indicator to update in the search index.
@@ -248,6 +168,30 @@ final class DataController: ObservableObject {
         )
         CSSearchableIndex.default().indexSearchableItems([searchableIndicator])
         save()
+    }
+    func fetchRequestForTopIndicators(count: Int) -> NSFetchRequest<Indicator> {
+        // Construct a fetch request to show the 10 highest-priority,
+        // incomplete items from open projects.
+        let indicatorRequest: NSFetchRequest<Indicator> = Indicator.fetchRequest()
+        let completedPredicate = NSPredicate(format: "completed = false")
+        let openPredicate = NSPredicate(format: "outcome.closed = false")
+        let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [completedPredicate, openPredicate])
+        indicatorRequest.predicate = compoundPredicate
+        indicatorRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Indicator.proficiency, ascending: false)]
+        indicatorRequest.fetchLimit = count
+        return indicatorRequest
+    }
+    func fetchRequestForIndicators() -> NSFetchRequest<Indicator> {
+        // Construct a fetch request to show the 10 highest-priority,
+        // incomplete items from open projects.
+        let indicatorRequest: NSFetchRequest<Indicator> = Indicator.fetchRequest()
+        let openPredicate = NSPredicate(format: "outcome.closed = false")
+        indicatorRequest.predicate = openPredicate
+        indicatorRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Indicator.proficiency, ascending: false)]
+        return indicatorRequest
+    }
+    func results<T: NSManagedObject>(for fetchRequest: NSFetchRequest<T>) -> [T] {
+        (try? container.viewContext.fetch(fetchRequest)) ?? []
     }
     /**
      Retrieve an indicator with the given unique identifier from the search index.

@@ -16,12 +16,8 @@ extension Home {
         @Published var indicators = [Indicator]()
         @Published var selectedIndicator: Indicator?
         let dataController: DataController
-        var upNext: ArraySlice<Indicator> {
-            indicators.prefix(3)
-        }
-        var moreToExplore: ArraySlice<Indicator> {
-            indicators.dropFirst(3)
-        }
+        @Published var upNext = ArraySlice<Indicator>()
+        @Published var moreToExplore = ArraySlice<Indicator>()
         /**
          Initialize a new view model with the given data controller.
          - Parameters:
@@ -39,15 +35,7 @@ extension Home {
                 sectionNameKeyPath: nil,
                 cacheName: nil
             )
-            // Construct a fetch request to show the 10 highest-priority,
-            // incomplete items from open projects.
-            let indicatorRequest: NSFetchRequest<Indicator> = Indicator.fetchRequest()
-            let completedPredicate = NSPredicate(format: "completed = false")
-            let openPredicate = NSPredicate(format: "outcome.closed = false")
-            indicatorRequest.predicate = NSCompoundPredicate(type: .and,
-                                                             subpredicates: [completedPredicate, openPredicate])
-            indicatorRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Indicator.proficiency, ascending: false)]
-            indicatorRequest.fetchLimit = 10
+            let indicatorRequest = dataController.fetchRequestForTopIndicators(count: 10)
             indicatorsController = NSFetchedResultsController(
                 fetchRequest: indicatorRequest,
                 managedObjectContext: dataController.container.viewContext,
@@ -60,6 +48,8 @@ extension Home {
             do {
                 try outcomesController.performFetch()
                 try indicatorsController.performFetch()
+                upNext = indicators.prefix(3)
+                moreToExplore = indicators.dropFirst(3)
                 outcomes = outcomesController.fetchedObjects ?? []
                 indicators = indicatorsController.fetchedObjects ?? []
             } catch {
@@ -72,11 +62,10 @@ extension Home {
          - controller: The controller that has changed.
          */
         func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-            if let newIndicators = controller.fetchedObjects as? [Indicator] {
-                indicators = newIndicators
-            } else if let newOutcomes = controller.fetchedObjects as? [Outcome] {
-                outcomes = newOutcomes
-            }
+            indicators = indicatorsController.fetchedObjects ?? []
+            upNext = indicators.prefix(3)
+            moreToExplore = indicators.dropFirst(3)
+            outcomes = outcomesController.fetchedObjects ?? []
         }
         func addSampleData() {
             dataController.deleteAll()

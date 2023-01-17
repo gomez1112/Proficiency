@@ -71,6 +71,8 @@ extension OutcomesView {
             let indicator = Indicator(context: dataController.container.viewContext)
             indicator.outcome = outcome
             indicator.createdAt = Date()
+            indicator.proficiency = 1
+            indicator.completed = false
             dataController.save()
         }
         /**

@@ -28,7 +28,7 @@ extension Indicator {
         indicator.title = "Example Indicator"
         indicator.detail = "This is an example indicator."
         indicator.proficiency = 0
-        indicator.completed = true
+        indicator.completed = false
         indicator.createdAt = Date()
         return indicator
     }

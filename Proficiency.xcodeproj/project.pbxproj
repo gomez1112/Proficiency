@@ -36,6 +36,23 @@
 		CC574A4D2963B6D90021F3FF /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4C2963B6D90021F3FF /* DataController.swift */; };
 		CC574A4F2963BD480021F3FF /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4E2963BD480021F3FF /* Home.swift */; };
 		CC574A512963BDA20021F3FF /* OutcomesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A502963BDA20021F3FF /* OutcomesView.swift */; };
+		CC7F827029759CC800FBAFB2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7F826F29759CC800FBAFB2 /* WidgetKit.framework */; };
+		CC7F827229759CC800FBAFB2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7F827129759CC800FBAFB2 /* SwiftUI.framework */; };
+		CC7F827529759CC800FBAFB2 /* ProficiencyWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F827429759CC800FBAFB2 /* ProficiencyWidgetBundle.swift */; };
+		CC7F827729759CC800FBAFB2 /* ProficiencyWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F827629759CC800FBAFB2 /* ProficiencyWidgetLiveActivity.swift */; };
+		CC7F827B29759CCA00FBAFB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC7F827A29759CCA00FBAFB2 /* Assets.xcassets */; };
+		CC7F827F29759CCA00FBAFB2 /* ProficiencyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CC7F826D29759CC800FBAFB2 /* ProficiencyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CC7F828429759DA200FBAFB2 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC574A492963B3960021F3FF /* Main.xcdatamodeld */; };
+		CC7F828529759DBC00FBAFB2 /* Indicator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3AFD2963C22E00972579 /* Indicator+Extension.swift */; };
+		CC7F828629759DC800FBAFB2 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC574A4C2963B6D90021F3FF /* DataController.swift */; };
+		CC7F828829759E2200FBAFB2 /* DataController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F828729759E2200FBAFB2 /* DataController+Extension.swift */; };
+		CC7F828A2975AC0A00FBAFB2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC0F3B112963E12800972579 /* Colors.xcassets */; };
+		CC7F828B2975AC1B00FBAFB2 /* Outcome+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0F3AFF2963C2FB00972579 /* Outcome+Extension.swift */; };
+		CC7F828C2975AC2A00FBAFB2 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF6908D296A0A2000EE80E3 /* Sequence+Extension.swift */; };
+		CC7F82912975AE0D00FBAFB2 /* ComplexProficiencyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F82902975AE0D00FBAFB2 /* ComplexProficiencyWidget.swift */; };
+		CC7F82932975AE8600FBAFB2 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F82922975AE8600FBAFB2 /* DataProvider.swift */; };
+		CC7F82952975AEE500FBAFB2 /* SimpleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F82942975AEE500FBAFB2 /* SimpleWidget.swift */; };
+		CC7F82992975EA1800FBAFB2 /* LockScreenWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7F82982975EA1800FBAFB2 /* LockScreenWidgets.swift */; };
 		CCCA9CCD2975747F00878FA6 /* SKProduct+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CCC2975747F00878FA6 /* SKProduct+Extension.swift */; };
 		CCCA9CD0297574EF00878FA6 /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CCF297574EF00878FA6 /* PurchaseButton.swift */; };
 		CCCA9CD22975763700878FA6 /* ProductVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9CD12975763700878FA6 /* ProductVIew.swift */; };
@@ -65,6 +82,13 @@
 			remoteGlobalIDString = CC574A362963B09F0021F3FF;
 			remoteInfo = Proficiency;
 		};
+		CC7F827D29759CCA00FBAFB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC574A2F2963B09F0021F3FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC7F826C29759CC800FBAFB2;
+			remoteInfo = ProficiencyWidgetExtension;
+		};
 		CCF690B0296A69EF00EE80E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CC574A2F2963B09F0021F3FF /* Project object */;
@@ -73,6 +97,20 @@
 			remoteInfo = Proficiency;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC7F828029759CCA00FBAFB2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CC7F827F29759CCA00FBAFB2 /* ProficiencyWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CC0565C3297343C500D60E08 /* ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTests.swift; sourceTree = "<group>"; };
@@ -108,6 +146,20 @@
 		CC574A4C2963B6D90021F3FF /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		CC574A4E2963BD480021F3FF /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		CC574A502963BDA20021F3FF /* OutcomesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomesView.swift; sourceTree = "<group>"; };
+		CC7F826D29759CC800FBAFB2 /* ProficiencyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ProficiencyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7F826F29759CC800FBAFB2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CC7F827129759CC800FBAFB2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CC7F827429759CC800FBAFB2 /* ProficiencyWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyWidgetBundle.swift; sourceTree = "<group>"; };
+		CC7F827629759CC800FBAFB2 /* ProficiencyWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProficiencyWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		CC7F827A29759CCA00FBAFB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC7F827C29759CCA00FBAFB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC7F828729759E2200FBAFB2 /* DataController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController+Extension.swift"; sourceTree = "<group>"; };
+		CC7F828929759F9D00FBAFB2 /* ProficiencyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProficiencyWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CC7F82902975AE0D00FBAFB2 /* ComplexProficiencyWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexProficiencyWidget.swift; sourceTree = "<group>"; };
+		CC7F82922975AE8600FBAFB2 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		CC7F82942975AEE500FBAFB2 /* SimpleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWidget.swift; sourceTree = "<group>"; };
+		CC7F82962975B4A100FBAFB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CC7F82982975EA1800FBAFB2 /* LockScreenWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidgets.swift; sourceTree = "<group>"; };
 		CCCA9CCC2975747F00878FA6 /* SKProduct+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extension.swift"; sourceTree = "<group>"; };
 		CCCA9CCF297574EF00878FA6 /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		CCCA9CD12975763700878FA6 /* ProductVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVIew.swift; sourceTree = "<group>"; };
@@ -145,6 +197,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CC7F826A29759CC800FBAFB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7F827229759CC800FBAFB2 /* SwiftUI.framework in Frameworks */,
+				CC7F827029759CC800FBAFB2 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CCF690A9296A69EF00EE80E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +237,7 @@
 				CCF69091296A13B600EE80E3 /* Bundle+Extension.swift */,
 				CCF6909A296A1F9100EE80E3 /* Color+Extension.swift */,
 				CCCA9CCC2975747F00878FA6 /* SKProduct+Extension.swift */,
+				CC7F828729759E2200FBAFB2 /* DataController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -216,9 +278,12 @@
 		CC574A2E2963B09F0021F3FF = {
 			isa = PBXGroup;
 			children = (
+				CC7F828929759F9D00FBAFB2 /* ProficiencyWidgetExtension.entitlements */,
 				CC574A392963B09F0021F3FF /* Proficiency */,
 				CCF690AD296A69EF00EE80E3 /* ProficiencyTests */,
 				CC2F71A0297443A900566382 /* ProficiencyUITests */,
+				CC7F827329759CC800FBAFB2 /* ProficiencyWidget */,
+				CC7F826E29759CC800FBAFB2 /* Frameworks */,
 				CC574A382963B09F0021F3FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -229,6 +294,7 @@
 				CC574A372963B09F0021F3FF /* Proficiency.app */,
 				CCF690AC296A69EF00EE80E3 /* ProficiencyTests.xctest */,
 				CC2F719F297443A900566382 /* ProficiencyUITests.xctest */,
+				CC7F826D29759CC800FBAFB2 /* ProficiencyWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +302,7 @@
 		CC574A392963B09F0021F3FF /* Proficiency */ = {
 			isa = PBXGroup;
 			children = (
+				CC7F82962975B4A100FBAFB2 /* Info.plist */,
 				CCCA9CCE297574E300878FA6 /* Styles */,
 				CCF690BF296AEB5900EE80E3 /* Constant */,
 				CCF690A4296A689C00EE80E3 /* ViewModel */,
@@ -258,6 +325,62 @@
 				CC574A422963B0A00021F3FF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CC7F826E29759CC800FBAFB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F826F29759CC800FBAFB2 /* WidgetKit.framework */,
+				CC7F827129759CC800FBAFB2 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC7F827329759CC800FBAFB2 /* ProficiencyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F82972975E9F600FBAFB2 /* LockScreen */,
+				CC7F828F2975ADBA00FBAFB2 /* Model */,
+				CC7F828E2975ADAE00FBAFB2 /* ComplexProficiencyWidget */,
+				CC7F828D2975ADA200FBAFB2 /* SimpleProficiencyWidget */,
+				CC7F827429759CC800FBAFB2 /* ProficiencyWidgetBundle.swift */,
+				CC7F827629759CC800FBAFB2 /* ProficiencyWidgetLiveActivity.swift */,
+				CC7F827A29759CCA00FBAFB2 /* Assets.xcassets */,
+				CC7F827C29759CCA00FBAFB2 /* Info.plist */,
+			);
+			path = ProficiencyWidget;
+			sourceTree = "<group>";
+		};
+		CC7F828D2975ADA200FBAFB2 /* SimpleProficiencyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F82942975AEE500FBAFB2 /* SimpleWidget.swift */,
+			);
+			path = SimpleProficiencyWidget;
+			sourceTree = "<group>";
+		};
+		CC7F828E2975ADAE00FBAFB2 /* ComplexProficiencyWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F82902975AE0D00FBAFB2 /* ComplexProficiencyWidget.swift */,
+			);
+			path = ComplexProficiencyWidget;
+			sourceTree = "<group>";
+		};
+		CC7F828F2975ADBA00FBAFB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F82922975AE8600FBAFB2 /* DataProvider.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC7F82972975E9F600FBAFB2 /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CC7F82982975EA1800FBAFB2 /* LockScreenWidgets.swift */,
+			);
+			path = LockScreen;
 			sourceTree = "<group>";
 		};
 		CCCA9CCE297574E300878FA6 /* Styles */ = {
@@ -379,15 +502,34 @@
 				CC574A342963B09F0021F3FF /* Frameworks */,
 				CC574A352963B09F0021F3FF /* Resources */,
 				CCF690A2296A65A200EE80E3 /* SwiftLint */,
+				CC7F828029759CCA00FBAFB2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CC7F827E29759CCA00FBAFB2 /* PBXTargetDependency */,
 			);
 			name = Proficiency;
 			productName = Proficiency;
 			productReference = CC574A372963B09F0021F3FF /* Proficiency.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CC7F826C29759CC800FBAFB2 /* ProficiencyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7F828329759CCA00FBAFB2 /* Build configuration list for PBXNativeTarget "ProficiencyWidgetExtension" */;
+			buildPhases = (
+				CC7F826929759CC800FBAFB2 /* Sources */,
+				CC7F826A29759CC800FBAFB2 /* Frameworks */,
+				CC7F826B29759CC800FBAFB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProficiencyWidgetExtension;
+			productName = ProficiencyWidgetExtension;
+			productReference = CC7F826D29759CC800FBAFB2 /* ProficiencyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		CCF690AB296A69EF00EE80E3 /* ProficiencyTests */ = {
 			isa = PBXNativeTarget;
@@ -424,6 +566,9 @@
 					CC574A362963B09F0021F3FF = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					CC7F826C29759CC800FBAFB2 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					CCF690AB296A69EF00EE80E3 = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = CC574A362963B09F0021F3FF;
@@ -446,6 +591,7 @@
 				CC574A362963B09F0021F3FF /* Proficiency */,
 				CCF690AB296A69EF00EE80E3 /* ProficiencyTests */,
 				CC2F719E297443A900566382 /* ProficiencyUITests */,
+				CC7F826C29759CC800FBAFB2 /* ProficiencyWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -467,6 +613,15 @@
 				CCF69095296A13F600EE80E3 /* Awards.json in Resources */,
 				CC574A432963B0A00021F3FF /* Preview Assets.xcassets in Resources */,
 				CC574A3F2963B0A00021F3FF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7F826B29759CC800FBAFB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7F827B29759CCA00FBAFB2 /* Assets.xcassets in Resources */,
+				CC7F828A2975AC0A00FBAFB2 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +677,7 @@
 				CCF690A1296A591B00EE80E3 /* OutcomeSummary.swift in Sources */,
 				CC0F3B0A2963D91200972579 /* EditIndicator.swift in Sources */,
 				CCF6908E296A0A2000EE80E3 /* Sequence+Extension.swift in Sources */,
+				CC7F828829759E2200FBAFB2 /* DataController+Extension.swift in Sources */,
 				CCCA9CCD2975747F00878FA6 /* SKProduct+Extension.swift in Sources */,
 				CC0F3B022963D0F100972579 /* Unit+Extension.swift in Sources */,
 				CC0F3B052963D52600972579 /* Tag.swift in Sources */,
@@ -552,6 +708,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CC7F826929759CC800FBAFB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC7F82952975AEE500FBAFB2 /* SimpleWidget.swift in Sources */,
+				CC7F828529759DBC00FBAFB2 /* Indicator+Extension.swift in Sources */,
+				CC7F82992975EA1800FBAFB2 /* LockScreenWidgets.swift in Sources */,
+				CC7F828629759DC800FBAFB2 /* DataController.swift in Sources */,
+				CC7F82932975AE8600FBAFB2 /* DataProvider.swift in Sources */,
+				CC7F827729759CC800FBAFB2 /* ProficiencyWidgetLiveActivity.swift in Sources */,
+				CC7F82912975AE0D00FBAFB2 /* ComplexProficiencyWidget.swift in Sources */,
+				CC7F827529759CC800FBAFB2 /* ProficiencyWidgetBundle.swift in Sources */,
+				CC7F828C2975AC2A00FBAFB2 /* Sequence+Extension.swift in Sources */,
+				CC7F828429759DA200FBAFB2 /* Main.xcdatamodeld in Sources */,
+				CC7F828B2975AC1B00FBAFB2 /* Outcome+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CCF690A8296A69EF00EE80E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -573,6 +747,11 @@
 			isa = PBXTargetDependency;
 			target = CC574A362963B09F0021F3FF /* Proficiency */;
 			targetProxy = CC2F71A5297443A900566382 /* PBXContainerItemProxy */;
+		};
+		CC7F827E29759CCA00FBAFB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC7F826C29759CC800FBAFB2 /* ProficiencyWidgetExtension */;
+			targetProxy = CC7F827D29759CCA00FBAFB2 /* PBXContainerItemProxy */;
 		};
 		CCF690B1296A69EF00EE80E3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -733,6 +912,7 @@
 		CC574A472963B0A00021F3FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Proficiency/Configuration/Proficiency.entitlements;
@@ -743,6 +923,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Proficiency/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -772,6 +953,7 @@
 		CC574A482963B0A00021F3FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Proficiency/Configuration/Proficiency.entitlements;
@@ -782,6 +964,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Proficiency/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -805,6 +988,67 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CC7F828129759CCA00FBAFB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ProficiencyWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88QL9VPLMY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProficiencyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ProficiencyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.transfinite.Proficiency.ProficiencyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC7F828229759CCA00FBAFB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ProficiencyWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 88QL9VPLMY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProficiencyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ProficiencyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.transfinite.Proficiency.ProficiencyWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -875,6 +1119,15 @@
 			buildConfigurations = (
 				CC574A472963B0A00021F3FF /* Debug */,
 				CC574A482963B0A00021F3FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7F828329759CCA00FBAFB2 /* Build configuration list for PBXNativeTarget "ProficiencyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7F828129759CCA00FBAFB2 /* Debug */,
+				CC7F828229759CCA00FBAFB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
